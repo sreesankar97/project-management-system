@@ -9,7 +9,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 
 
         <!-- Styles -->
@@ -78,7 +78,7 @@
         </style>
     </head>
     <body>
-    <!-- <div id="particles-js" class="flex-center position-ref full-height" > -->
+     <!-- <div id="particles-js" class="flex-center position-ref full-height" >  -->
     
         <div class="flex-center position-ref full-height">
          
@@ -87,12 +87,12 @@
                 <div class="col-md-8 col-md-offset-2">
                   <div class="panel" >
                   @if(Auth::check())
-                <div align="center" class="top-right links">
-                        <a style="color:white;font-size:20px" href="{{ url('/home') }}">Home</a>
+                <div >
+                         <a class="btn" align="center" style="color:white;font-size:20px" href="{{ url('/home') }}">Home</a>
                 </div>
            @else
            <div style="color:#fff;">
-                        <a class="btn" style="color:white;font-size:20px" href="{{ url('/login') }}">Student Login</a>
+                        <a class="btn" style="color:white;font-size:20px" href="{{ url('/login') }}">Team Login</a>
             &nbsp;
                         <a class="btn" style="color:white;font-size:20px" href="{{ url('admin/login') }}">Admin Login</a>
             &nbsp;
@@ -105,12 +105,12 @@
               </div>
             </div>
         </div>
-        <!-- <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>  
-        <script>
+         <!-- <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>   -->
+        <!-- <script>
         particlesJS.load('particles-js', 'js/particles.json',
         function(){
-            console.log('particles.json loaded...') -->
+            console.log('particles.json loaded...') 
         })
-    </script>
+    </script> -->
     </body>
 </html>
