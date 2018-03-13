@@ -1,3 +1,4 @@
+@extends('layouts.Admindashboard')
 @extends('layouts.lay-admin')
 @extends('layouts.app')
 

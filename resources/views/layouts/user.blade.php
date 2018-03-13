@@ -35,13 +35,13 @@
   <a href="{{ url('users/documents') }}" class="w3-bar-item w3-button">Submit Documents</a>
 </div>
 
-                    <script src="{{ asset('js/app.js') }}"></script>    
+                    <script src="{{ asset('js/app.js') }}"></script>
 <!-- Page Content -->
 <div style="margin-left:15%">
 
 <div class="w3-container w3-teal">
   <h1>User Dashboard</h1>
-</div>  
+</div>
 <p>
  @yield('content')
 </p>
