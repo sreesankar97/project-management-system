@@ -11,7 +11,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->email }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
@@ -32,16 +32,17 @@
   <h3 class="w3-bar-item">Menu</h3>
   <a href="{{ url('users/attendence') }}" class="w3-bar-item w3-button">View Attendence</a>
   <a href="{{ url('users/marks') }}" class="w3-bar-item w3-button">View Marks</a>
+  <a href="{{ url('/viewmsg') }}" class="w3-bar-item w3-button">View Messages</a>
   <a href="{{ url('users/documents') }}" class="w3-bar-item w3-button">Submit Documents</a>
 </div>
 
-                    <script src="{{ asset('js/app.js') }}"></script>
+                    <script src="{{ asset('js/app.js') }}"></script>    
 <!-- Page Content -->
 <div style="margin-left:15%">
 
 <div class="w3-container w3-teal">
   <h1>User Dashboard</h1>
-</div>
+</div>  
 <p>
  @yield('content')
 </p>

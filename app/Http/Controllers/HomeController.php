@@ -31,8 +31,12 @@ class HomeController extends Controller
         $users=studentmark::where('groupid','=',Auth::user()->groupid)->get();
         return view('home-attendence')->withUsers($users);
     }
-    public function viewMarks(){
-        return view('home-marks');
+   
+    public function viewMarks()
+    {
+        $id=Auth::user()->groupid;
+        $users = studentmark::where('email',$id)->get();
+        return view('home-marks')->with('users',$users);
     }
     public function viewDocuments(){
         return view('home-document');

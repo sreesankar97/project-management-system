@@ -14,14 +14,17 @@ class Studentmarks extends Migration
     public function up()
     {
         Schema::create('studentmarks', function (Blueprint $table) {
-        $table->string('id');
-        $table->string('name');
-        $table->integer('groupid');
-        $table->integer('review1');
-        $table->integer('review2');
-        $table->integer('final');
-        $table->rememberToken();
-        $table->timestamps();
+            $table->string('stu_id')->unique();
+            $table->string('name');
+            $table->string('email');
+            $table->integer('total_class');
+            $table->integer('present');
+            $table->integer('groupid');
+            $table->integer('review1');
+            $table->integer('review2');
+            $table->integer('final');
+            $table->rememberToken();
+            $table->timestamps();
     });
     }
 
