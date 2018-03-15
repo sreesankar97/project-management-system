@@ -16,8 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
-
+Route::get('/eachmarks/{id}','AdminController@marksadd');
 Route::get('/eachattend/{id}','AdminController@addeachattend');
   Route::get('/addattendance/{id}','AdminController@addattend');
   Route::get('/posts/{id}','StudentController@viewpostbyone');
@@ -28,7 +27,9 @@ Route::get('/addmarks/{id}', 'AdminController@studentmarks');
 Route::get('/viewmsg', 'StudentController@viewpost');
 Route::get('/addatt', 'AdminController@addattendance');
 Route::get('/addmarks', 'AdminController@addmarks');
-
+Route::post('/firstreviewmarks', 'AdminController@firstreviewmarks')->name('admin.msg');
+Route::post('/secondreviewmarks', 'AdminController@secondreviewmarks')->name('admin.msg');
+Route::post('/finalreviewmarks', 'AdminController@finalreviewmarks')->name('admin.msg');
 Route::get('/fileupload', 'AdminController@fileupload');
 
 Route::get('/home', 'HomeController@index');
@@ -41,9 +42,11 @@ Route::prefix('admin')->group(function() {
   Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
   Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
   Route::get('/', 'AdminController@index')->name('admin.dashboard');
+  
   Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
   Route::post('/msgcompose', 'AdminController@msgcompose')->name('admin.msg');
   Route::post('/attendance', 'AdminController@attendance')->name('admin.msg');
+  Route::post('/addattendancestud', 'AdminController@addattendancestud')->name('admin.msg');
 
   // Password reset routes
   Route::post('/password/email', 'Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');

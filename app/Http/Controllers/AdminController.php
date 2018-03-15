@@ -29,6 +29,7 @@ class AdminController extends Controller
      */
     public function index()
     {
+    
         return view('admin');
     }
 
@@ -109,19 +110,70 @@ class AdminController extends Controller
 
     public function addeachattend($id)
     {
-        
+    
         $user = studentmark::where('email',$id)->get();
-        return view('Attendance.addeachattend')->with('user',$user);
-
+        $group_id= $user[0]->groupid;
+        $users= studentmark::where('groupid',$group_id)->get();
+        return view('Attendance.addeachattend',['student'=>$user,'users'=>$users]);
+     
     }
 
     public function attendance(Request $request)
-    {   
+    {      
         studentmark::where('email',$request->userid)->update(array('total_class' => $request->total));
         studentmark::where('email',$request->userid)->update(array('present' => $request->present));
         $request->session()->flash('success', 'Record successfully added!');
         return back();
+
+        
     }
+
+    public function addeachmarks($id)
+    {
+        $stu_id = $id;
+        return view('marks.addmarks')->with('stu-id',$stu_id);
+    }
+
+    
+
+    public function marksadd($id)
+    {
+        $user = studentmark::where('email',$id)->get();
+        $group_id= $user[0]->groupid;
+        $users= studentmark::where('groupid',$group_id)->get();
+        return view('marks.addstudentmarks',['student'=>$user,'users'=>$users]);
+       
+        
+    }
+
+    
+
+    public function firstreviewmarks(Request $request)
+    {      
+        studentmark::where('email',$request->userid)->update(array('review1' => $request->first));
+            $request->session()->flash('success', 'Record successfully added!');
+            return back();
+   
+    }
+
+    public function secondreviewmarks(Request $request)
+    {      
+        studentmark::where('email',$request->userid)->update(array('review2' => $request->second));
+            $request->session()->flash('success', 'Record successfully added!');
+            return back();
+   
+    }
+
+    public function finalreviewmarks(Request $request)
+    {      
+        studentmark::where('email',$request->userid)->update(array('final' => $request->final));
+            $request->session()->flash('success', 'Record successfully added!');
+            return back();
+   
+    }
+
+   
+
 
   
 

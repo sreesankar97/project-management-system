@@ -24,9 +24,9 @@ th, td {
         
         <tr>
             <th>Name</th>
-             <th>Class Present</th>
-             <th>Total Classes</th>
-                 <th>Total Percentage</th>
+             <th>1st Review Marks</th>
+             <th>2nd Review Marks</th>
+                 <th>Final Review</th>
             </tr>         
     @foreach($users as $row)
             
@@ -35,9 +35,9 @@ th, td {
             
             <tr>
                         <td>{{$row->name}}</td>
-                        <td>{{$row->present}}</td>
-                        <td>{{$row->total_class}}</td>
-                        <td>{{$perc}}</td>
+                        <td>{{$row->review1}}</td>
+                        <td>{{$row->review2}}</td>
+                        <td>{{$row->final}}</td>
                         
     
                  </tr>
@@ -65,7 +65,6 @@ th, td {
         <option>  <a class="dropdown-item" href="/eachattend/{{$user->email}}"> {{$user->name}}</a></option>
         
  --}}
-
  <div class="col-md-2">
             <label for="question">Select Student : </label>
  </div>
@@ -74,7 +73,7 @@ th, td {
                             
                                 @foreach($users as $user)
                                 <div class="col-md-2">
-                                <p> <strong> <a href="/eachattend/{{$user->email}}">{{$user->name}}</a></strong></p>
+                                <p> <strong> <a href="/eachmarks/{{$user->email}}">{{$user->name}}</a></strong></p>
                                 </div>
                                 @endforeach
                            
@@ -97,9 +96,14 @@ th, td {
     @if(Session::has('success'))
     <p class="alert alert-success">{{ Session::get('success') }}</p>
 @endif
- </div>
-            <h2> Add Attendance for {{$student[0]->name}}</h2>
-            {!! Form::open(['action' => 'AdminController@attendance', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+
+            </div>
+           
+
+        <h2>  Add marks for {{$student[0]->name}}</h2>
+
+       
+          {!! Form::open(['action' => 'AdminController@firstreviewmarks', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
                     
                     {{ Form::hidden('userid', $student[0]->email)}}
@@ -107,20 +111,45 @@ th, td {
              </div>
              <div class="col-md-2">
             <div class="form-group">
-                {{Form::label('label1', 'Total No. of Classes')}}
-                {{Form::text('total', '', ['class' => 'form-control', 'placeholder' => 'Total No. of Classes'])}}
+                {{Form::label('label1', '1st Review Marks')}}
+                {{Form::text('first', '', ['class' => 'form-control', 'placeholder' => '1st Review Marks'])}}
+               <br> {{Form::submit('ADD/UPDATE', ['class'=>'btn btn-primary'])}}
+              
             </div></div>
-            <div class="form-group">
-                    <div class="col-md-2">
-                    {{Form::label('label2', 'No. of Classes Present')}}
-                    {{Form::text('present', '', ['class' => 'form-control', 'placeholder' => 'No. of Classes Present'])}}
-                </div> </div>
-
-                <div class="col-md-6">
-                    <br>
-             {{Form::submit('ADD/UPDATE', ['class'=>'btn btn-primary'])}}
             {!! Form::close() !!}
-                </div>
+       
+
+        
+
+            {!! Form::open(['action' => 'AdminController@secondreviewmarks', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+            
+            <div class="form-group">
+                    {{ Form::hidden('userid', $student[0]->email)}}
+                    <div class="col-md-2">
+                    {{Form::label('label2', '2nd Review Marks')}}
+                    {{Form::text('second', '', ['class' => 'form-control', 'placeholder' => '2nd Review Marks'])}}
+                        
+                 <br>   {{Form::submit('ADD/UPDATE', ['class'=>'btn btn-primary'])}}
+                </div> </div>
+                {!! Form::close() !!}
+        
+
+                {!! Form::open(['action' => 'AdminController@finalreviewmarks', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+            
+                <div class="form-group">
+                        {{ Form::hidden('userid', $student[0]->email)}}
+                        <div class="col-md-2">
+                        {{Form::label('label2', 'Final Review Marks')}}
+                        {{Form::text('final', '', ['class' => 'form-control', 'placeholder' => 'Final Review Marks'])}}
+                      <br>  {{Form::submit('ADD/UPDATE', ['class'=>'btn btn-primary'],['name'=>'form3'])}}
+                     </div> </div>
+        
+
+                
+             
+            {!! Form::close() !!}
+
+              
            
      
 @endsection

@@ -32,7 +32,7 @@ class RegisterController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @return voids
      */
     public function __construct()
     {

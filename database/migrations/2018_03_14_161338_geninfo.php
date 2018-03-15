@@ -19,7 +19,7 @@ class Geninfo extends Migration
             $table->string('topic');
             $table->integer('guide_id');
             
-            }
+            });
     }
 
     /**

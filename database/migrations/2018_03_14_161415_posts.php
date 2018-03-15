@@ -20,6 +20,7 @@ class Posts extends Migration
             $table->string('title');
             $table->mediumText('body');
             $table->timestamps();
+        });
     }
 
     /**
