@@ -9,6 +9,7 @@ use App\studentmark;
 use Auth;
 use App\posts;
 use Illuminate\Support\Facades\DB;
+use App\fileupload;
 
 class AdminController extends Controller
 {
@@ -172,6 +173,48 @@ class AdminController extends Controller
    
     }
 
+    public function adminfileupload(Request $request)
+    {
+
+        if($request->hasFile('cover_image')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+        $post->cover_image = $fileNameToStore;
+        $post->save();
+    
+
+
+
+    }
+
+    public function fileuploadselectgroup()
+    {  
+        $teams= geninfo::all();
+        return view('files.selectgroup')->with('team',$teams);
+
+
+
+    }
+
+    public function viewfileuploads($group_id)
+    {
+
+        
+        $file=fileupload::where('groupid',$group_id)->where('guide_verify',1)->get();
+        return view('files.adminviewfiles')->with('file',$file);
+
+    }
    
 
 

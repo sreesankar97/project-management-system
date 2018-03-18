@@ -142,12 +142,17 @@ th, td {
                         {{Form::label('label2', 'Final Review Marks')}}
                         {{Form::text('final', '', ['class' => 'form-control', 'placeholder' => 'Final Review Marks'])}}
                       <br>  {{Form::submit('ADD/UPDATE', ['class'=>'btn btn-primary'],['name'=>'form3'])}}
+                      
                      </div> </div>
         
 
                 
              
             {!! Form::close() !!}
+
+            
+
+            
 
               
            

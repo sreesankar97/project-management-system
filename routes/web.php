@@ -15,7 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
 Auth::routes();
+Route::get('/viewfiles/{id}','AdminController@viewfileuploads');
+
+
+Route::get('/adminfileselectgroup','AdminController@fileuploadselectgroup');
+Route::get('/proformaupload','studentController@fileup');
 Route::get('/eachmarks/{id}','AdminController@marksadd');
 Route::get('/eachattend/{id}','AdminController@addeachattend');
   Route::get('/addattendance/{id}','AdminController@addattend');
@@ -30,7 +38,6 @@ Route::get('/addmarks', 'AdminController@addmarks');
 Route::post('/firstreviewmarks', 'AdminController@firstreviewmarks')->name('admin.msg');
 Route::post('/secondreviewmarks', 'AdminController@secondreviewmarks')->name('admin.msg');
 Route::post('/finalreviewmarks', 'AdminController@finalreviewmarks')->name('admin.msg');
-Route::get('/fileupload', 'AdminController@fileupload');
 
 Route::get('/home', 'HomeController@index');
 Route::get('/users/attendence','HomeController@viewAttendence');
@@ -47,6 +54,7 @@ Route::prefix('admin')->group(function() {
   Route::post('/msgcompose', 'AdminController@msgcompose')->name('admin.msg');
   Route::post('/attendance', 'AdminController@attendance')->name('admin.msg');
   Route::post('/addattendancestud', 'AdminController@addattendancestud')->name('admin.msg');
+  Route::post('/studentfileupload', 'studentcontroller@studentfileupload');
 
   // Password reset routes
   Route::post('/password/email', 'Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');

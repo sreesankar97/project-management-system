@@ -33,7 +33,7 @@
   <a href="{{ url('users/attendence') }}" class="w3-bar-item w3-button">View Attendence</a>
   <a href="{{ url('users/marks') }}" class="w3-bar-item w3-button">View Marks</a>
   <a href="{{ url('/viewmsg') }}" class="w3-bar-item w3-button">View Messages</a>
-  <a href="{{ url('users/documents') }}" class="w3-bar-item w3-button">Submit Documents</a>
+  <a href="{{ url('/proformaupload') }}" class="w3-bar-item w3-button">Submit Documents</a>
 </div>
 
                     <script src="{{ asset('js/app.js') }}"></script>    

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\studentmarks;
 use App\posts;
 use App\User;
+use App\fileupload;
 use Auth;
 
 class studentcontroller extends Controller
@@ -101,4 +102,48 @@ class studentcontroller extends Controller
         return view('posts.viewmessage')->with('posts',$posts);
         
     }
+
+    public function studentfileupload(Request $request)
+{
+
+    if($request->hasFile('filename')){
+        // Get filename with the extension
+        $filenameWithExt = $request->file('filename')->getClientOriginalName();
+        // Get just filename
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        // Get just ext
+        $extension = $request->file('filename')->getClientOriginalExtension();
+        // Filename to store
+        $fileNameToStore= $filename.'_'.time().'.'.$extension;
+        // Upload Image
+        $path = $request->file('filename')->storeAs('public/proforma', $fileNameToStore);
+    } else {
+        $fileNameToStore = 'nofile.jpg';
+    }
+    
+    $file = new fileupload;
+   $file->filename = $fileNameToStore;
+  $file->groupid= $request->groupid;
+  $file->save();
+  $request->session()->flash('success', 'Record successfully added!');
+            return back();
+
+
+
+
+}
+
+public function fileup()
+{   
+    $user = Auth::user();
+     $id= $user->groupid;
+     $download=fileupload::where('groupid','=',Auth::user()->groupid)->get();
+        return view('fileupload',['groupid'=>$id,'downloads'=>$download]);
+       
+
+
+}
+
+
+   
 }

@@ -311,6 +311,7 @@ class ComposerStaticInit8b7750003827c457ae3cffc2a5e7b36c
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
+        'Fileuploads' => __DIR__ . '/../..' . '/database/migrations/2018_03_16_125959_fileuploads.php',
         'Geninfo' => __DIR__ . '/../..' . '/database/migrations/2018_03_14_161338_geninfo.php',
         'Hamcrest\\Arrays\\IsArray' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
         'Hamcrest\\Arrays\\IsArrayContaining' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
