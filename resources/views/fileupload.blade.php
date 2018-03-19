@@ -58,7 +58,7 @@
 <h2>Upload File</h2>
 {!! Form::open(['action' => 'studentcontroller@studentfileupload', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 <div class="form-group">
-        {{Form::file('proforma')}}
+        {{Form::file('filename')}}
     </div>
 
     {{ Form::hidden('groupid', $groupid)}}

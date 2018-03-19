@@ -82,13 +82,17 @@ class AdminController extends Controller
     public function msgcompose(Request $request)
     {
         //$var=1;
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required',
+            
+        ]);
         $post= new posts;
         $post->group_id =$request->groupid;
         $post->title= $request->title;
         $post->body= $request->body;
         $post->save();
-        // return view('posts.confirm')->with('var',$var);
-//        $value = session('key', 'machana pwolikk!');
+  
         $request->session()->flash('success', 'Message Sent Succcessfully');
         return back();
     }
@@ -121,10 +125,31 @@ class AdminController extends Controller
 
     public function attendance(Request $request)
     {      
+        $this->validate($request, [
+            'total' => 'required',
+            'present' => 'required',
+            
+        ]);
+        
+        $tot = $request->total;
+        $present= $request->present;
+
+        if($tot > 0 && $tot> $present )
+        {
+
         studentmark::where('email',$request->userid)->update(array('total_class' => $request->total));
         studentmark::where('email',$request->userid)->update(array('present' => $request->present));
         $request->session()->flash('success', 'Record successfully added!');
         return back();
+        }
+
+        else if(($request->total)==0)
+        return back()->with('msg', 'Total classes connot be zero');
+
+         else if(($request->total) < ($request->present))
+         return back()->with('msg', 'Total classes conducted cannot be less than classes attended');
+
+        
 
         
     }
@@ -150,7 +175,13 @@ class AdminController extends Controller
     
 
     public function firstreviewmarks(Request $request)
-    {      
+
+    {     
+        
+        $this->validate($request, [
+            'first' => 'required',
+          
+        ]);
         studentmark::where('email',$request->userid)->update(array('review1' => $request->first));
             $request->session()->flash('success', 'Record successfully added!');
             return back();
@@ -159,6 +190,11 @@ class AdminController extends Controller
 
     public function secondreviewmarks(Request $request)
     {      
+
+        $this->validate($request, [
+            'second' => 'required',
+           
+        ]);
         studentmark::where('email',$request->userid)->update(array('review2' => $request->second));
             $request->session()->flash('success', 'Record successfully added!');
             return back();
@@ -167,35 +203,14 @@ class AdminController extends Controller
 
     public function finalreviewmarks(Request $request)
     {      
+        $this->validate($request, [
+            'final' => 'required',
+           
+        ]);
         studentmark::where('email',$request->userid)->update(array('final' => $request->final));
             $request->session()->flash('success', 'Record successfully added!');
             return back();
    
-    }
-
-    public function adminfileupload(Request $request)
-    {
-
-        if($request->hasFile('cover_image')){
-            // Get filename with the extension
-            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore= $filename.'_'.time().'.'.$extension;
-            // Upload Image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
-        } else {
-            $fileNameToStore = 'noimage.jpg';
-        }
-        $post->cover_image = $fileNameToStore;
-        $post->save();
-    
-
-
-
     }
 
     public function fileuploadselectgroup()

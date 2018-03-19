@@ -44,5 +44,6 @@
   <h1>User Dashboard</h1>
 </div>  
 <p>
+@include('layouts.validation')
  @yield('content')
 </p>

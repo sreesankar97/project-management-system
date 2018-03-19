@@ -96,6 +96,11 @@ th, td {
     <br>
     @if(Session::has('success'))
     <p class="alert alert-success">{{ Session::get('success') }}</p>
+
+    @elseif(Session::has('msg'))
+    <p class="alert alert-danger">{{ Session::get('msg') }}</p>
+   
+
 @endif
  </div>
             <h2> Add Attendance for {{$student[0]->name}}</h2>

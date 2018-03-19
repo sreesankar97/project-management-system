@@ -1,4 +1,6 @@
-
+<style>#index #menu .index, #page1 #menu .page1{
+    font-weight: bold;
+}</style>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -28,7 +30,7 @@
                                     </li>
                                     </ul>
                                     </nav>
-<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%">
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%" id="menu">
   <h3 class="w3-bar-item">Menu</h3>
   <a href="{{ url('admin/importExport') }}" class="w3-bar-item w3-button">Team Formation</a>
     <a href="{{ url('users/documents') }}" class="w3-bar-item w3-button">Team Update</a>
@@ -47,6 +49,7 @@
   <h1>Admin Dashboard</h1>
 </div>  
 <p>
+ @include('layouts.validation')
  @yield('content')
 </p>
 
