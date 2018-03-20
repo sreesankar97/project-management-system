@@ -144,12 +144,10 @@ class AdminController extends Controller
         }
 
         else if(($request->total)==0)
-        return back()->with('msg', 'Total classes connot be zero');
+        return back()->with('msg', 'Total classes conducted connot be zero or text');
 
          else if(($request->total) < ($request->present))
          return back()->with('msg', 'Total classes conducted cannot be less than classes attended');
-
-        
 
         
     }

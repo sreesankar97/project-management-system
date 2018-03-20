@@ -9,23 +9,25 @@
                     <h1> Compose Message</h1>
                 </div>
                 
-                
+                <div class="col-md-8">
                 {!! Form::open(['action' => 'AdminController@msgcompose', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                 <div class="form-group">
                     {{Form::label('groupid', 'Group Id')}}
                     {{Form::text('groupid', $id, ['class' => 'form-control', 'placeholder' => 'Group Id'])}}
                 </div>
                 <div class="form-group">
+                        
                         {{Form::label('title', 'Title')}}
                         {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])}}
                     </div>
                     <div class="form-group">
                         {{Form::label('body', 'Body')}}
                         {{Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
-                    </div>
+                    </div> 
                     
                     {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
                 {!! Form::close() !!}
+            </div>
                
          
 @endsection

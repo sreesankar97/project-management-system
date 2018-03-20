@@ -102,6 +102,8 @@ class MaatwebsiteDemoController extends Controller
 
 
 				$i=0;
+				$errcount=0;
+				$rowcount=0;
 				foreach ($data->toArray() as $key => $value) {
 
 					if(!empty($value)){
@@ -112,13 +114,40 @@ class MaatwebsiteDemoController extends Controller
 						// 	$insert = ['name' => $v['name'], 'email' => $v['email'], 'rollno' => $v['rollno']];
 						//
 						// }
+						$rowcount++;
+
+						$users = Student::where('rollno',$value['rollno']) ->orWhere('email',$value['email'])->get();
+						
+						if(count($users)>0)
+						{
+							$errcount++;
+							
+						}
+
+						else
+						{
+
 						$insert[$i++]= ['name' => $value['name'], 'email' => $value['email'], 'rollno' => $value['rollno'], 'cgpa' => $value['cgpa']];
 					}
+				}
+
+				}
+				
+				if($errcount==$rowcount)
+				{
+					return back()->with('error','Only duplicate entries found');
 
 				}
 
+				else if($errcount > 0)
+				{
+					\App\Student::insert($insert);
 
+					return back()->with('error','Data inserted successfully except Duplicate entries found');
 
+				}
+
+				
 
 				if(!empty($insert)){
 
