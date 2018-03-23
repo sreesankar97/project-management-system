@@ -40,7 +40,7 @@
 
             .top-right {
                 position: absolute;
-                 right: 10px; 
+                 right: 10px;
                 /* padding:20%;         */
                 top: 18px;
             }
@@ -73,15 +73,15 @@
                 padding: 10px 15px;
                 border-radius: 8px;
                 line-height: 4em;
-                
+
             }
         </style>
     </head>
     <body>
      <!-- <div id="particles-js" class="flex-center position-ref full-height" >  -->
-    
+
         <div class="flex-center position-ref full-height">
-         
+
             <div class="container">
               <div class="row">
                 <div class="col-md-8 col-md-offset-2">
@@ -96,7 +96,7 @@
             &nbsp;
                         <a class="btn" style="color:white;font-size:20px" href="{{ url('admin/login') }}">Admin Login</a>
             &nbsp;
-                        <a class="btn" style="color:white;font-size:20px" href="{{ url('/register') }}">Faculty Login</a>
+                        <a class="btn" style="color:white;font-size:20px" href="{{ url('/faculty/login') }}">Faculty Login</a>
                         </div>
             @endif
                   </div>
@@ -109,7 +109,7 @@
         <!-- <script>
         particlesJS.load('particles-js', 'js/particles.json',
         function(){
-            console.log('particles.json loaded...') 
+            console.log('particles.json loaded...')
         })
     </script> -->
     </body>

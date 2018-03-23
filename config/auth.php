@@ -53,6 +53,14 @@ return [
             'driver' => 'token',
             'provider' => 'admins',
         ],
+        'faculty' => [
+            'driver' => 'session',
+            'provider' => 'faculties',
+        ],
+        'faculty-api' => [
+            'driver' => 'token',
+            'provider' => 'faculties',
+        ],
     ],
 
     /*
@@ -81,7 +89,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
         ],
-
+        'faculties' => [
+            'driver' => 'eloquent',
+            'model' => App\Faculty::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -111,6 +122,11 @@ return [
         ],
         'admins' => [
             'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 15,
+        ],
+        'faculties' => [
+            'provider' => 'faculties',
             'table' => 'password_resets',
             'expire' => 15,
         ],

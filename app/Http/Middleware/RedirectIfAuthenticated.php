@@ -23,6 +23,11 @@ class RedirectIfAuthenticated
             return redirect()->route('admin.dashboard');
           }
           break;
+        case 'faculty':
+          if (Auth::guard($guard)->check()) {
+            return redirect()->route('faculty.dashboard');
+          }
+            break;
 
         default:
           if (Auth::guard($guard)->check()) {

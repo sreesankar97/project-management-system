@@ -49,7 +49,7 @@ Route::prefix('admin')->group(function() {
   Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
   Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
   Route::get('/', 'AdminController@index')->name('admin.dashboard');
-  
+
   Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
   Route::post('/msgcompose', 'AdminController@msgcompose')->name('admin.msg');
   Route::post('/attendance', 'AdminController@attendance')->name('admin.msg');
@@ -66,4 +66,10 @@ Route::prefix('admin')->group(function() {
   Route::get('/importExport', 'MaatwebsiteDemoController@importExport');
   Route::get('/downloadExcel/{type}', 'MaatwebsiteDemoController@downloadExcel');
   Route::post('/importExcel', 'MaatwebsiteDemoController@importExcel');
+});
+//Faculty Login
+Route::prefix('faculty')->group(function() {
+  Route::get('/login', 'Auth\FacultyLoginController@showLoginForm')->name('faculty.login');
+  Route::post('/login', 'Auth\FacultyLoginController@login')->name('faculty.login.submit');
+  Route::get('/','FacultyController@index')->name('faculty.dashboard');
 });
