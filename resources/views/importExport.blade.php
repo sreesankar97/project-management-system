@@ -1,10 +1,36 @@
 @extends('layouts.lay-admin')
 @section('content')
 
+<style>
 
-   @if(count($users)==0)
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+.btn{
+                color: black;
+                text-decoration: none;
+                border: #ccc 1px solid;
+                padding: 10px 15px;
+                border-radius: 8px;
+                line-height: 4em;
+
+            }
+</style>
+
+
+@if(count($users)==0)
+
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
+
+
+
+
 
 
 	<div class="container">
@@ -74,7 +100,7 @@
 					<a href="{{ url('downloadExcel/csv') }}"><button class="btn btn-success btn-lg">Download CSV</button></a>
 
 				</div>-->
-               
+
 
 
 		  </div>
@@ -82,9 +108,28 @@
 		</div>
 
 	</div>
-
 	@else
-	     <h3> <i> Already Data Present in the database </i> </h3>
+	<table style="width:100%">
 
-   @endif
+	        <tr>
+	            <th>Name</th>
+	             <th>Email Id</th>
+	             <th>RollNo</th>
+	                 <th>CGPA</th>
+	            </tr>
+							@foreach($users as $row)
+							<tr>
+													<td>{{$row->name}}</td>
+													<td>{{$row->email}}</td>
+													<td>{{$row->rollno}}</td>
+													<td>{{$row->cgpa}}</td>
+
+
+									 </tr>
+								    @endforeach
+	    </table>
+			<b>Plese Enter no of Students in a Team!!</b>
+		</br>{{ Form::text('no of students in team') }}
+
+@endif
 @endsection

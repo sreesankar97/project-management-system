@@ -167,11 +167,10 @@ class MaatwebsiteDemoController extends Controller
 	public function teamformation()
 	{
 
-		
-		$var=student::all();
+
+		$var=student::orderBy('cgpa', 'desc')->get();
 		return view('importExport')->with('users',$var);
 
 	}
-
-
+	
 }

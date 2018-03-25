@@ -19,22 +19,10 @@ Route::get('/', function () {
 
 
 Auth::routes();
-Route::get('/importexport', 'MaatwebsiteDemoController@teamformation');
-
 Route::get('/viewfiles/{id}','AdminController@viewfileuploads');
 
-Route::get('/viewfiles/{id}','AdminController@viewfileuploads');
-Route::get('/guide/viewfile/selectgroup','FacultyController@guideviewfileselectgroup');
-Route::get('/fileapprove/{id}','FacultyController@guidefileapprove');
 
-Route::get('/filereject/{id}','FacultyController@guidefilereject');
-Route::get('/guide/viewfiles/{id}','FacultyController@viewfileuploads');
-Route::get('/guide/teamstatus','FacultyController@selectteamteamstatus');
-Route::get('/teamstatus/{id}','FacultyController@addguidemarks');
-Route::get('guidemarks/selectgroup','FacultyController@guidemarksselectgroup');
-Route::get('addguidemarks/{id}','FacultyController@addguidemarks');
 
-Route::get('/guideeachmarks/{$user->email}}','FacultyController@addguidemarks');
 
 Route::get('/adminfileselectgroup','AdminController@fileuploadselectgroup');
 Route::get('/proformaupload','studentController@fileup');
@@ -52,7 +40,7 @@ Route::get('/addmarks', 'AdminController@addmarks');
 Route::post('/firstreviewmarks', 'AdminController@firstreviewmarks')->name('admin.msg');
 Route::post('/secondreviewmarks', 'AdminController@secondreviewmarks')->name('admin.msg');
 Route::post('/finalreviewmarks', 'AdminController@finalreviewmarks')->name('admin.msg');
-Route::post('/filerejectreason', 'FacultyController@filerejectreason');
+
 Route::get('/home', 'HomeController@index');
 Route::get('/users/attendence','HomeController@viewAttendence');
 Route::get('/users/marks','HomeController@viewMarks');
@@ -77,7 +65,8 @@ Route::prefix('admin')->group(function() {
   Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 
   //Excel sheet importing routes
- 
+  Route::get('/importexport', 'MaatwebsiteDemoController@teamformation');
+
   Route::get('/downloadExcel/{type}', 'MaatwebsiteDemoController@downloadExcel');
   Route::post('/importExcel', 'MaatwebsiteDemoController@importExcel');
 });
