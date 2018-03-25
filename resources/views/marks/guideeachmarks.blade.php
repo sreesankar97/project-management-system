@@ -1,4 +1,4 @@
-@extends('layouts.lay-admin')
+@extends('layouts.lay-faculty')
 <style>
 
 table, th, td {
@@ -27,6 +27,7 @@ th, td {
              <th>1st Review Marks</th>
              <th>2nd Review Marks</th>
                  <th>Final Review</th>
+                 <th>Guide Marks</th>
             </tr>         
     @foreach($users as $row)
             
@@ -38,6 +39,7 @@ th, td {
                         <td>{{$row->review1}}</td>
                         <td>{{$row->review2}}</td>
                         <td>{{$row->final}}</td>
+                        <td>{{$row->guide_marks}}</td>
                         
     
                  </tr>
@@ -73,7 +75,7 @@ th, td {
                             
                                 @foreach($users as $user)
                                 <div class="col-md-2">
-                                <p> <strong> <a href="/addguidemarks/{{$user->email}}">{{$user->name}}</a></strong></p>
+                                <p> <strong> <a href="/guideeachmarks/{{$user->email}}">{{$user->name}}</a></strong></p>
                                 </div>
                                 @endforeach
                            
@@ -112,7 +114,7 @@ th, td {
              <div class="col-md-2">
             <div class="form-group">
                 {{Form::label('label1', 'Guide Marks')}}
-                {{Form::text('first', '', ['class' => 'form-control', 'placeholder' => '1st Review Marks'])}}
+                {{Form::text('first', '', ['class' => 'form-control', 'placeholder' => 'Guide Marks'])}}
                <br> {{Form::submit('ADD/UPDATE', ['class'=>'btn btn-primary'])}}
               
             </div></div>

@@ -27,6 +27,7 @@ th, td {
              <th>1st Review Marks</th>
              <th>2nd Review Marks</th>
                  <th>Final Review</th>
+                 <th>Guide Marks</th>
             </tr>         
     @foreach($users as $row)
             
@@ -38,7 +39,7 @@ th, td {
                         <td>{{$row->review1}}</td>
                         <td>{{$row->review2}}</td>
                         <td>{{$row->final}}</td>
-                        
+                        <td>{{$row->guide_marks}}</td>
     
                  </tr>
                 @endforeach
