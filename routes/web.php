@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 
 Auth::routes();
+Route::get('/importexport', 'MaatwebsiteDemoController@teamformation');
+
 Route::get('/viewfiles/{id}','AdminController@viewfileuploads');
 
 Route::get('/viewfiles/{id}','AdminController@viewfileuploads');
@@ -32,7 +34,7 @@ Route::get('/teamstatus/{id}','FacultyController@addguidemarks');
 Route::get('guidemarks/selectgroup','FacultyController@guidemarksselectgroup');
 Route::get('addguidemarks/{id}','FacultyController@addguidemarks');
 
-Route::get('/guideeachmarks/{id}','FacultyController@addguidemarkseachstudent');
+Route::get('/guideeachmarks/{$user->email}}','FacultyController@addguidemarks');
 
 Route::get('/adminfileselectgroup','AdminController@fileuploadselectgroup');
 Route::get('/proformaupload','studentController@fileup');
@@ -75,8 +77,7 @@ Route::prefix('admin')->group(function() {
   Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 
   //Excel sheet importing routes
-  Route::get('/importExport', 'MaatwebsiteDemoController@teamformation');
-  Route::get('/importExport', 'MaatwebsiteDemoController@importExport');
+ 
   Route::get('/downloadExcel/{type}', 'MaatwebsiteDemoController@downloadExcel');
   Route::post('/importExcel', 'MaatwebsiteDemoController@importExcel');
 });

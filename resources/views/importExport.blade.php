@@ -1,14 +1,10 @@
 @extends('layouts.lay-admin')
 @section('content')
 
-@if(count($var)==0)
-{
+
+   @if(count($users)==0)
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
-
-
-
-
 
 
 	<div class="container">
@@ -78,7 +74,7 @@
 					<a href="{{ url('downloadExcel/csv') }}"><button class="btn btn-success btn-lg">Download CSV</button></a>
 
 				</div>-->
-
+               
 
 
 		  </div>
@@ -86,6 +82,9 @@
 		</div>
 
 	</div>
-}
-@endif
+
+	@else
+	     <h3> <i> Already Data Present in the database </i> </h3>
+
+   @endif
 @endsection

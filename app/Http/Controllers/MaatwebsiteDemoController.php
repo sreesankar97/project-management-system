@@ -30,13 +30,7 @@ class MaatwebsiteDemoController extends Controller
 
      */
 
-	public function importExport()
 
-	{
-
-		return view('importExport');
-
-	}
 
 
 
@@ -173,8 +167,9 @@ class MaatwebsiteDemoController extends Controller
 	public function teamformation()
 	{
 
-		$var=students::all();
-		return view('importExport')->with('var',$var);
+		
+		$var=student::all();
+		return view('importExport')->with('users',$var);
 
 	}
 
