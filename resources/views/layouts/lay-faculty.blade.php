@@ -32,13 +32,10 @@
                                     </nav>
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%" id="menu">
   <h3 class="w3-bar-item">Menu</h3>
-  <a href="{{ url('admin/importExport') }}" class="w3-bar-item w3-button">Team Formation</a>
-    <a href="{{ url('users/documents') }}" class="w3-bar-item w3-button">Team Update</a>
-  <a href="{{ url('users/marks') ? 'active' : '' }}" class="w3-bar-item w3-button">Add Guides</a>
-  <a href="{{ url('addatt') }}" class="w3-bar-item w3-button">Add Attendance</a>
-  <a href="{{ url('addmarks') }}" class="w3-bar-item w3-button">Add Marks</a>
-  <a href="{{ url('/select') }}" class="w3-bar-item w3-button">Sent Message</a>
-  <a href="{{ url('/adminfileselectgroup') }}" class="w3-bar-item w3-button">View Files</a>
+  <a href="{{ url('guide/teamstatus') }}" class="w3-bar-item w3-button">Team Status</a>
+    <a href="{{ url('guidemarks/selectgroup') }}" class="w3-bar-item w3-button">Add Marks</a>
+  <a href="{{ url('guide/viewfile/selectgroup')  }}" class="w3-bar-item w3-button">View Files</a>
+
 </div>
 
                     <script src="{{ asset('js/app.js') }}"></script>

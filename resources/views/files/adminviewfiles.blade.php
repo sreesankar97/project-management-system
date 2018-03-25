@@ -32,6 +32,7 @@
 							<a href="/storage/proforma/{{$down->filename}}" download="{{$down->filename}}">
 								<button type="button" class="btn btn-primary">
 								<i class="glyphicon glyphicon-download">
+									
 									Download
 								</i>
 								</button>

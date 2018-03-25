@@ -23,6 +23,7 @@ class Studentmarks extends Migration
             $table->integer('review1');
             $table->integer('review2');
             $table->integer('final');
+            $table->integer('guide_marks');
             $table->rememberToken();
             $table->timestamps();
     });
