@@ -63,6 +63,7 @@ Route::prefix('admin')->group(function() {
   Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 
   //Excel sheet importing routes
+  Route::get('/importExport', 'MaatwebsiteDemoController@teamformation');
   Route::get('/importExport', 'MaatwebsiteDemoController@importExport');
   Route::get('/downloadExcel/{type}', 'MaatwebsiteDemoController@downloadExcel');
   Route::post('/importExcel', 'MaatwebsiteDemoController@importExcel');

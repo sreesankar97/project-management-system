@@ -1,8 +1,8 @@
-
 @extends('layouts.lay-admin')
 @section('content')
 
-
+@if(count($var)==0)
+{
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
 
@@ -10,10 +10,6 @@
 
 
 
-
-<br/>
-
-<br/>
 
 	<div class="container">
 
@@ -42,7 +38,7 @@
 
 
 
-				
+
 
 
 
@@ -90,5 +86,6 @@
 		</div>
 
 	</div>
-
+}
+@endif
 @endsection

@@ -117,11 +117,11 @@ class MaatwebsiteDemoController extends Controller
 						$rowcount++;
 
 						$users = Student::where('rollno',$value['rollno']) ->orWhere('email',$value['email'])->get();
-						
+
 						if(count($users)>0)
 						{
 							$errcount++;
-							
+
 						}
 
 						else
@@ -132,7 +132,7 @@ class MaatwebsiteDemoController extends Controller
 				}
 
 				}
-				
+
 				if($errcount==$rowcount)
 				{
 					return back()->with('error','Only duplicate entries found');
@@ -147,7 +147,7 @@ class MaatwebsiteDemoController extends Controller
 
 				}
 
-				
+
 
 				if(!empty($insert)){
 
@@ -170,7 +170,13 @@ class MaatwebsiteDemoController extends Controller
 		return back()->with('error','Please Check your file, Something is wrong there.');
 
 	}
+	public function teamformation()
+	{
 
+		$var=students::all();
+		return view('importExport')->with('var',$var);
+
+	}
 
 
 }

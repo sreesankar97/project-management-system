@@ -30,27 +30,27 @@ class AdminController extends Controller
      */
     public function index()
     {
-    
+
         return view('admin');
     }
 
-   
+
 
     public function addmarks()
     {
-        
+
           $users = geninfo::all();
           return view('marks.add-marks')->with('users',$users);;
     }
 
     public function studentmarks($groupid)
     {
-        
+
         $users = studentmark::where('groupid',$groupid)->get();
         return view('marks.studentmarks')->with('users',$users);
     }
-  
-    
+
+
 
     public function fileupload()
     {
@@ -66,17 +66,17 @@ class AdminController extends Controller
     {
         $posts=  geninfo::all();
         return view('posts.selectgroup')->with('posts',$posts);
-        
-       
-        
+
+
+
     }
 
     public function viewpost($id)
     {
-       
+
         return view('posts.postform')->with('id',$id);
 
-        
+
     }
 
     public function msgcompose(Request $request)
@@ -85,14 +85,14 @@ class AdminController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
-            
+
         ]);
         $post= new posts;
         $post->group_id =$request->groupid;
         $post->title= $request->title;
         $post->body= $request->body;
         $post->save();
-  
+
         $request->session()->flash('success', 'Message Sent Succcessfully');
         return back();
     }
@@ -100,37 +100,37 @@ class AdminController extends Controller
     public function addattendance()
     {
 
-    
+
         $users = geninfo::all();
         return view('Attendance.add-att')->with('users',$users);
 
     }
 
     public function addattend($groupid)
-    {   
-       
+    {
+
         $users = studentmark::where('groupid',$groupid)->get();
         return view('Attendance.addattend')->with('users',$users);
     }
 
     public function addeachattend($id)
     {
-    
+
         $user = studentmark::where('email',$id)->get();
         $group_id= $user[0]->groupid;
         $users= studentmark::where('groupid',$group_id)->get();
         return view('Attendance.addeachattend',['student'=>$user,'users'=>$users]);
-     
+
     }
 
     public function attendance(Request $request)
-    {      
+    {
         $this->validate($request, [
             'total' => 'required',
             'present' => 'required',
-            
+
         ]);
-        
+
         $tot = $request->total;
         $present= $request->present;
 
@@ -149,7 +149,7 @@ class AdminController extends Controller
          else if(($request->total) < ($request->present))
          return back()->with('msg', 'Total classes conducted cannot be less than classes attended');
 
-        
+
     }
 
     public function addeachmarks($id)
@@ -158,7 +158,7 @@ class AdminController extends Controller
         return view('marks.addmarks')->with('stu-id',$stu_id);
     }
 
-    
+
 
     public function marksadd($id)
     {
@@ -166,53 +166,53 @@ class AdminController extends Controller
         $group_id= $user[0]->groupid;
         $users= studentmark::where('groupid',$group_id)->get();
         return view('marks.addstudentmarks',['student'=>$user,'users'=>$users]);
-       
-        
+
+
     }
 
-    
+
 
     public function firstreviewmarks(Request $request)
 
-    {     
-        
+    {
+
         $this->validate($request, [
             'first' => 'required',
-          
+
         ]);
         studentmark::where('email',$request->userid)->update(array('review1' => $request->first));
             $request->session()->flash('success', 'Record successfully added!');
             return back();
-   
+
     }
 
     public function secondreviewmarks(Request $request)
-    {      
+    {
 
         $this->validate($request, [
             'second' => 'required',
-           
+
         ]);
         studentmark::where('email',$request->userid)->update(array('review2' => $request->second));
             $request->session()->flash('success', 'Record successfully added!');
             return back();
-   
+
     }
 
     public function finalreviewmarks(Request $request)
-    {      
+    {
         $this->validate($request, [
             'final' => 'required',
-           
+
         ]);
         studentmark::where('email',$request->userid)->update(array('final' => $request->final));
             $request->session()->flash('success', 'Record successfully added!');
             return back();
-   
+
     }
 
     public function fileuploadselectgroup()
-    {  
+    {
         $teams= geninfo::all();
         return view('files.selectgroup')->with('team',$teams);
 
@@ -223,14 +223,14 @@ class AdminController extends Controller
     public function viewfileuploads($group_id)
     {
 
-        
+
         $file=fileupload::where('groupid',$group_id)->where('guide_verify',1)->get();
         return view('files.adminviewfiles')->with('file',$file);
 
     }
-   
-
 
   
+
+
 
 }
