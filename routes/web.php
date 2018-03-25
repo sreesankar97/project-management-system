@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 
 Auth::routes();
+Route::get('/guideeachmarks/{id}','FacultyController@addguidemarkseachstudent');
 Route::get('/importexport', 'MaatwebsiteDemoController@teamformation');
 
 Route::get('/viewfiles/{id}','AdminController@viewfileuploads');
@@ -34,7 +35,7 @@ Route::get('/teamstatus/{id}','FacultyController@addguidemarks');
 Route::get('guidemarks/selectgroup','FacultyController@guidemarksselectgroup');
 Route::get('addguidemarks/{id}','FacultyController@addguidemarks');
 
-Route::get('/guideeachmarks/{$user->email}}','FacultyController@addguidemarks');
+;
 
 Route::get('/adminfileselectgroup','AdminController@fileuploadselectgroup');
 Route::get('/proformaupload','studentController@fileup');
@@ -53,6 +54,7 @@ Route::post('/firstreviewmarks', 'AdminController@firstreviewmarks')->name('admi
 Route::post('/secondreviewmarks', 'AdminController@secondreviewmarks')->name('admin.msg');
 Route::post('/finalreviewmarks', 'AdminController@finalreviewmarks')->name('admin.msg');
 Route::post('/filerejectreason', 'FacultyController@filerejectreason');
+Route::post('/guidemarksofstudent', 'FacultyController@guidemarksofstudent');
 Route::get('/home', 'HomeController@index');
 Route::get('/users/attendence','HomeController@viewAttendence');
 Route::get('/users/marks','HomeController@viewMarks');

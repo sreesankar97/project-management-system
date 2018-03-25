@@ -10,6 +10,7 @@
                         Project Management System
                     </a>
                 </div>
+<div>
 <ul class="nav navbar-nav navbar-right">
 <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -44,6 +45,7 @@
 
 <div class="w3-container w3-teal">
   <h1>Faculty Dashboard</h1>
+</div>
 </div>
 <p>
  @include('layouts.validation')

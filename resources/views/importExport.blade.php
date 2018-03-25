@@ -84,7 +84,7 @@
 	</div>
 
 	@else
-	     <h3> <i> Already Data Present in the database </i> </h3>
+	     <h2> <i> Already Data Present in the database </i> </h2>
 
    @endif
 @endsection
