@@ -66,7 +66,7 @@ Route::prefix('admin')->group(function() {
 
   //Excel sheet importing routes
   Route::get('/importexport', 'MaatwebsiteDemoController@teamformation');
-
+  //Route::get('/importexport', 'MaatwebsiteDemoController@team');
   Route::get('/downloadExcel/{type}', 'MaatwebsiteDemoController@downloadExcel');
   Route::post('/importExcel', 'MaatwebsiteDemoController@importExcel');
 });

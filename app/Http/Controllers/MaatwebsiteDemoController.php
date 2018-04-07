@@ -172,5 +172,19 @@ class MaatwebsiteDemoController extends Controller
 		return view('importExport')->with('users',$var);
 
 	}
-	
+/*	public function team(Request $request)
+	{
+			$this->validate($request, [
+					'studentno' => 'required',
+					'count' =>'required',
+
+			]);
+
+			$sno = $request->studentno;
+			$count =$request->count;
+			$exstud=$count%$sno;
+			$totalstud=$count-$exstud;
+			$noofteam=$totalstud/$sno;
+
+	}*/
 }
