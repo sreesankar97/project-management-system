@@ -124,13 +124,13 @@ th, td {
 									 </tr>
 								    @endforeach
 	    </table>
-  
-          
+
+
 			   {!! Form::open(['action' => 'MaatwebsiteDemoController@team', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 				   <div class="form-group">
-						   
-						 
-					
+
+
+
 					</div>
 					<div class="col-md-2">
 				   <div class="form-group">
@@ -138,10 +138,10 @@ th, td {
 					   {{Form::label('label1', 'Plese Enter no of Students in a Team!!')}}
 					   {{Form::text('studentno', '', ['class' => 'form-control', 'placeholder' => ' No. of students in a team'])}}
 				   </div></div>
-				   
+
 				   <div class="col-md-6">
 						<br>
-				 {{Form::submit('ADD/UPDATE', ['class'=>'btn btn-primary'])}}
+				 {{Form::submit('Form Team', ['class'=>'btn btn-primary'])}}
 				{!! Form::close() !!}
 					</div>
 

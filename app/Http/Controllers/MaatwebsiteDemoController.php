@@ -185,8 +185,8 @@ class MaatwebsiteDemoController extends Controller
 			$exstud=$count % $sno;
 			$totalstud=$count-$exstud;
 			$noofteam=$totalstud/$sno;
+			dd($count);
 
-	
 
 	}
 }
