@@ -105,6 +105,15 @@ th, td {
 
 	</div>
 	@else
+
+	<div class="panel-body">
+		<br>
+	    @if(Session::has('msg'))
+		<p class="alert alert-danger">{{ Session::get('msg') }}</p>
+	   
+	
+	@endif
+	 </div>
 	<table style="width:100%">
 
 	        <tr>
