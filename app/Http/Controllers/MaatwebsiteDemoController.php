@@ -172,7 +172,7 @@ class MaatwebsiteDemoController extends Controller
 		return view('importExport')->with('users',$var);
 
 	}
-/*	public function team(Request $request)
+	public function team(Request $request)
 	{
 			$this->validate($request, [
 					'studentno' => 'required',
@@ -182,9 +182,11 @@ class MaatwebsiteDemoController extends Controller
 
 			$sno = $request->studentno;
 			$count =$request->count;
-			$exstud=$count%$sno;
+			$exstud=$count % $sno;
 			$totalstud=$count-$exstud;
 			$noofteam=$totalstud/$sno;
 
-	}*/
+	
+
+	}
 }
