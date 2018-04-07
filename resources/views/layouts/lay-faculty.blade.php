@@ -38,14 +38,17 @@
 
 </div>
 
-                    <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>    
 <!-- Page Content -->
 <div style="margin-left:15%">
 
 <div class="w3-container w3-teal">
-  <h1>Faculty Dashboard</h1>
-</div>
+<h1>Admin Dashboard</h1>
+</div>  
 <p>
- @include('layouts.validation')
- @yield('content')
+@include('layouts.validation')
+@yield('content')
 </p>
+
+
+

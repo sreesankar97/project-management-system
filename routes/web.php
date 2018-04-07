@@ -19,10 +19,20 @@ Route::get('/', function () {
 
 
 Auth::routes();
+<<<<<<< HEAD
+=======
+Route::get('/guideeachmarks/{id}','FacultyController@addguidemarkseachstudent');
+Route::get('/importexport', 'MaatwebsiteDemoController@teamformation');
+
+>>>>>>> 7a369a6b3563b5e37882a7673e760b9e08cb9690
 Route::get('/viewfiles/{id}','AdminController@viewfileuploads');
 
 
 
+<<<<<<< HEAD
+=======
+;
+>>>>>>> 7a369a6b3563b5e37882a7673e760b9e08cb9690
 
 Route::get('/adminfileselectgroup','AdminController@fileuploadselectgroup');
 Route::get('/proformaupload','studentController@fileup');
@@ -40,7 +50,12 @@ Route::get('/addmarks', 'AdminController@addmarks');
 Route::post('/firstreviewmarks', 'AdminController@firstreviewmarks')->name('admin.msg');
 Route::post('/secondreviewmarks', 'AdminController@secondreviewmarks')->name('admin.msg');
 Route::post('/finalreviewmarks', 'AdminController@finalreviewmarks')->name('admin.msg');
+<<<<<<< HEAD
 
+=======
+Route::post('/filerejectreason', 'FacultyController@filerejectreason');
+Route::post('/guidemarksofstudent', 'FacultyController@guidemarksofstudent');
+>>>>>>> 7a369a6b3563b5e37882a7673e760b9e08cb9690
 Route::get('/home', 'HomeController@index');
 Route::get('/users/attendence','HomeController@viewAttendence');
 Route::get('/users/marks','HomeController@viewMarks');

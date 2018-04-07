@@ -109,6 +109,7 @@ th, td {
 
 	</div>
 	@else
+<<<<<<< HEAD
 	<table style="width:100%">
 
 	        <tr>
@@ -148,4 +149,9 @@ th, td {
 -->
 
 @endif
+=======
+	     <h2> <i> Already Data Present in the database </i> </h2>
+
+   @endif
+>>>>>>> 7a369a6b3563b5e37882a7673e760b9e08cb9690
 @endsection
