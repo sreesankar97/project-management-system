@@ -22,11 +22,15 @@ th, td {
             }
 </style>
 
-<?php $count=count($users) ?>
+<!--$count=count($users)-->
 @if(count($users)==0)
 
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
+
+
+
+
 
 
 	<div class="container">
@@ -105,6 +109,7 @@ th, td {
 
 	</div>
 	@else
+<<<<<<< HEAD
 	<table style="width:100%">
 
 	        <tr>
@@ -124,29 +129,29 @@ th, td {
 									 </tr>
 								    @endforeach
 	    </table>
+  <!--  </div>
+               {!! Form::open(['action' => 'MaatwebsiteDemoController@team', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+               <div class="form-group">
 
+                       {{ Form::hidden('count', $count)}}
 
-			   {!! Form::open(['action' => 'MaatwebsiteDemoController@team', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-				   <div class="form-group">
+                </div>
+                <div class="col-md-2">
+               <div class="form-group">
+                   {{Form::label('label1', 'Plese Enter no of Students in a Team!!')}}
+                   {{Form::text('studentno', '', ['class' => 'form-control', 'placeholder' => 'No. of Students In Team'])}}
+               </div></div>
+                 <div class="col-md-6">
+                       <br>
+                {{Form::submit('ADD/UPDATE', ['class'=>'btn btn-primary'])}}
+               {!! Form::close() !!}
+                   </div>
+-->
 
+@endif
+=======
+	     <h2> <i> Already Data Present in the database </i> </h2>
 
-
-					</div>
-					<div class="col-md-2">
-				   <div class="form-group">
-						{{ Form::hidden('count', $count)}}
-					   {{Form::label('label1', 'Plese Enter no of Students in a Team!!')}}
-					   {{Form::text('studentno', '', ['class' => 'form-control', 'placeholder' => ' No. of students in a team'])}}
-				   </div></div>
-
-				   <div class="col-md-6">
-						<br>
-				 {{Form::submit('Form Team', ['class'=>'btn btn-primary'])}}
-				{!! Form::close() !!}
-					</div>
-
-
-
-</div>
    @endif
+>>>>>>> 7a369a6b3563b5e37882a7673e760b9e08cb9690
 @endsection
