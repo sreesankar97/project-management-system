@@ -190,15 +190,15 @@ class MaatwebsiteDemoController extends Controller
 			$exstud=$count % $sno;
 			$totalstud=$count-$exstud;
 			$noofteam=$totalstud/$sno;
-<<<<<<< HEAD
+
 			dd($count);
-=======
+
 			}
 
-		
+
 			else if(($request->studentno) > ($request->count))
 			return back()->with('msg', 'Total number of students must be greater than team size');
->>>>>>> 6b03daac9cefadc5d6f2142c863095e1a2d76aef
+
 
 
 	}
