@@ -15,6 +15,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/guideeachmarks/{id}','FacultyController@addguidemarkseachstudent');
 
+Route::get('/formedteams/{id}','MaatwebsiteDemoController@viewteams');
 Route::get('/viewfiles/{id}','AdminController@viewfileuploads');
 Route::get('/viewfiles/{id}','AdminController@viewfileuploads');
 Route::get('/guide/viewfile/selectgroup','FacultyController@guideviewfileselectgroup');
@@ -58,6 +59,7 @@ Route::prefix('admin')->group(function() {
   Route::post('/attendance', 'AdminController@attendance')->name('admin.msg');
   Route::post('/addattendancestud', 'AdminController@addattendancestud')->name('admin.msg');
   Route::post('/studentfileupload', 'studentcontroller@studentfileupload');
+  Route::get('/viewteamlist', 'MaatwebsiteDemoController@viewteamlist');
   // Password reset routes
   Route::post('/password/email', 'Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
   Route::get('/password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');

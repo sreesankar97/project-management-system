@@ -22,8 +22,10 @@ th, td {
             }
 </style>
 
-<?php $count=count($users) ?>
-@if($count==0)
+<?php $count=count($users) ;
+$sorted=count($sorted) ; ?>
+
+@if($count==0 && $sorted==0)
 
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
@@ -108,15 +110,16 @@ th, td {
 		</div>
 
 	</div>
-	@else
+	@elseif($count > 0)
   <div class="panel-body">
       <br>
 
       @if(Session::has('msg'))
-      <p class="alert alert-danger">{{ Session::get('msg') }}</p>
+	  <p class="alert alert-danger">{{ Session::get('msg') }}</p>
+	  @endif
 
 
-  @endif
+ 
    </div>
 
 	<table style="width:100%">
@@ -156,8 +159,12 @@ th, td {
                 {{Form::submit('ADD/UPDATE', ['class'=>'btn btn-primary'])}}
                {!! Form::close() !!}
                    </div>
-                 </div>
-
+				 </div>
+	@elseif($sorted>0)
+	
+	<script type="text/javascript">
+		window.location = "/admin/viewteamlist";
+	</script>
 
 @endif
 
