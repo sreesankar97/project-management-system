@@ -21,6 +21,7 @@ class CreateStudentsTable extends Migration
          $table->string('rollno')->unique();
          $table->string('cgpa');
          $table->string('group_id');
+         $table->timestamps();
 
      });
     }

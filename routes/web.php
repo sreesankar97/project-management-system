@@ -15,6 +15,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/guideeachmarks/{id}','FacultyController@addguidemarkseachstudent');
 
+Route::get('/teamapprove/{id}','AdminController@guidealloc');
 Route::get('/formedteams/{id}','MaatwebsiteDemoController@viewteams');
 Route::get('/viewfiles/{id}','AdminController@viewfileuploads');
 Route::get('/viewfiles/{id}','AdminController@viewfileuploads');

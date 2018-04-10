@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Redirect;
 
 
 use Illuminate\Http\Request;
@@ -305,7 +305,8 @@ class MaatwebsiteDemoController extends Controller
 			if((count($pending)==0))
 			{ 
 
-				  $this->viewteamlist();
+				return Redirect::to('admin/viewteamlist');
+				
 			}
 
 
