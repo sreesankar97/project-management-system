@@ -229,6 +229,24 @@ class AdminController extends Controller
 
     }
 
+    public function guidealloc($group_id)
+    {
+        return $group_id;
+        return view('guidealloc')->with('group_id',$group_id);
+
+   
+    }
+
+    public function teamalloc($group_id)
+    {
+        return $group_id;
+        return view('guidealloc')->with('group_id',$group_id);
+
+   
+    }
+
+    
+
   
 
 

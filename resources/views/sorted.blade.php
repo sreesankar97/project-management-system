@@ -11,7 +11,7 @@
                 <div class="col-md-2 col-sm-2">
                  
                     <p> <strong> Group No:  <a href="/formedteams/{{$team->group_id}}">{{$team->group_id}}</a></strong></p>
-                   
+                   <br>
                 </div>
             </div>
         </div>

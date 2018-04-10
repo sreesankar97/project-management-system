@@ -33,4 +33,13 @@ th, td {
              </tr>
             @endforeach
 </table>
+
+<a href="/teamapprove/{{$users[0]->group_id}}" onclick="return confirm('Are you sure? Do you want to approve the selected group?')">
+    <button type="button" class="w3-button w3-green">
+    <i class="glyphicon glyphicon-ok"> 
+     
+      Approve
+    </i>
+    </button>
+</a>
 @endsection
