@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use \App\Student;
+use \App\sorted;
 
 use Excel;
 
@@ -169,7 +170,9 @@ class MaatwebsiteDemoController extends Controller
 
 
 		$var=student::orderBy('cgpa', 'desc')->get();
-		return view('importExport')->with('users',$var);
+		$sorted=sorted::orderBy('cgpa', 'desc')->get();
+	
+		return view('importExport',['sorted'=>$sorted,'users'=>$var]);
 
 	}
 	public function team(Request $request)
@@ -183,23 +186,146 @@ class MaatwebsiteDemoController extends Controller
 			if($request->studentno ==0)
 			return back()->with('msg', 'Number of students in a team cannot be null');
 
-			else if($request->count > 0 && $request->count > $request->studentno )
-			{
-			$sno = $request->studentno;
-			$count =$request->count;
-			$exstud=$count % $sno;
-			$totalstud=$count-$exstud;
-			$noofteam=$totalstud/$sno;
-
-			dd($count);
-
-			}
-
+			
 
 			else if(($request->studentno) > ($request->count))
 			return back()->with('msg', 'Total number of students must be greater than team size');
 
+			else 
+			{
+				
+				
+			$sno = $request->studentno;
+			$count =$request->count;
+			$exstud=$count % $sno;
+			$totalstud=$count-$exstud;
+			$noofteam=$count/$sno;
+
+			//dd($count);
+
+			$var=student::orderBy('cgpa', 'desc')->get();
+		    /*$half= $sno/2;
+			$half=ceil($half);
+			echo $half;
+			$bott= $sno-$half;
+			$h=1;
+			*/
+		
+			$i=1;
+			$n=1;
+			$c=0;
+			
+
+			while($n<$count)
+			{
+		
+				
+			   $t=1;
+			   if($c==0)
+			   {
+				   $i=$n;
+			   }
+			   
+				   
+
+			for($i= $i; $t<$noofteam+1; $i++ )
+			
+			{  
+			
+				if(!isset($var[$n-1]) || $var[$n-1] == false)
+				break;
+			    $post= new sorted;
+				$post->name =$var[$n-1]->name;
+				$post->email= $var[$n-1]->email;
+				$post->rollno= $var[$n-1]->rollno;
+				$post->cgpa= $var[$n-1]->cgpa;
+				$post->group_id= $t;
+				$post->save();
+				student::where('rollno',$var[$n-1]->rollno)->delete();
+				$n=$n+1;
+				$t++;
+				
+				
+				
+			}
+			$c=1;
+		
+			
+			
+			for($j= $i; $j>=2 ;$j-- )
+			{
+				
+				if(!isset($var[$n-1]) || $var[$n-1] == false)
+				break;
+				$post= new sorted;
+				$post->name =$var[$n-1]->name;
+				$post->email= $var[$n-1]->email;
+				$post->rollno= $var[$n-1]->rollno;
+				$post->cgpa= $var[$n-1]->cgpa;
+				$post->group_id= $j-1;
+				$post->save();
+				student::where('rollno',$var[$n-1]->rollno)->delete();
+				$n=$n+1;
+				if($j-1==0)
+				{$n=$n-1;
+				}
+				
+				$i--;
+		
+		
+			}
+	
+		}
+
+		
+
+			}
+
+			$pending=student::orderBy('cgpa', 'desc')->get();
+			if(count($pending)>0)
+			{
+				
+				$count= count($pending);
+				for($i=0;$i<$count;$i++)
+				{
+				$post= new sorted;
+				$post->name =$pending[$i]->name;
+				$post->email= $pending[$i]->email;
+				$post->rollno= $pending[$i]->rollno;
+				$post->cgpa= $pending[$i]->cgpa;
+				$post->group_id= $i+1;
+				$post->save();
+				student::where('rollno',$pending[$i]->rollno)->delete();
+				}
+
+				
+			}
+
+            $pending=student::orderBy('cgpa', 'desc')->get();
+			if((count($pending)==0))
+			{ 
+
+				  $this->viewteamlist();
+			}
 
 
 	}
+
+	public function viewteams($group_id)
+	{
+		$var=sorted::where('group_id',$group_id)->get();
+		return view('formedteams')->with('users',$var);
+
+
+	}
+
+	public function viewteamlist()
+	{
+		$var=sorted::select('group_id')->distinct('group_id')->get();
+		return view('sorted')->with('users',$var);
+	}
+
+
+
+
 }
