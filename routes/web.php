@@ -64,11 +64,12 @@ Route::prefix('admin')->group(function() {
   Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset');
   Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
   //Excel sheet importing routes
-
  Route::get('/importexport', 'MaatwebsiteDemoController@teamformation');
  Route::post('/team', 'MaatwebsiteDemoController@team');
   Route::get('/downloadExcel/{type}', 'MaatwebsiteDemoController@downloadExcel');
   Route::post('/importExcel', 'MaatwebsiteDemoController@importExcel');
+  //Sending mail
+  Route::get('send','mailController@send');
 });
 //Faculty Login
 Route::prefix('faculty')->group(function() {
