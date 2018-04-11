@@ -234,19 +234,19 @@ class AdminController extends Controller
     public function guidealloc($group_id)
     {
         $faculty= faculty::get();
-      
-        return view('guideselect',['faculty'=>$faculty,'groupid'=>$group_id]);
-        
 
-   
+        return view('guideselect',['faculty'=>$faculty,'groupid'=>$group_id]);
+
+
+
     }
 
     public function teamalloc($group_id)
     {
-        
+
         return view('guidealloc')->with('group_id',$group_id);
 
-   
+
     }
 
     public function createfaculty()
@@ -262,12 +262,12 @@ class AdminController extends Controller
         $post->email= $request->email;
         $post->job_title= 'guide';
         $post->password=bcrypt('password');
-        
+
         $post->save();
         $request->session()->flash('guidesuccess', 'Faculty Created Successfully.. ');
         return view('admin');
-    
-       
+
+
     }
 
     public function teamconfirm(Request $request)
@@ -286,8 +286,8 @@ class AdminController extends Controller
         $post->review2 = 0;
         $post->final = 0;
         $post->guide_marks = 0;
-        
-        
+
+
         $post->save();
        }
 
@@ -297,7 +297,7 @@ class AdminController extends Controller
        $post->groupid=$users[0]->group_id;
        $post->password=bcrypt('password');
        $post->save();
-        
+
        $post= new geninfo;
        $post->group_id = $users[0]->group_id;
        $post->topic = 'Topic not assigned';
@@ -306,11 +306,11 @@ class AdminController extends Controller
        $request->session()->flash('success', 'Team Created Successfully.. ');
 
         sorted::where('group_id',$users[0]->group_id)->delete();
-        return view('admin');
-       
+        return view('admin')->with('id',$users[0]->group_id);
+
     }
 
-  
+
 
 
 

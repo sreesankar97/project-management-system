@@ -8,12 +8,22 @@
                 <br>
                 @if(Session::has('success'))
                 <p class="alert alert-success">{{ Session::get('success') }}</p>
+                <p>Do you want to Send mail to students in the groupno={{$id}} </p>
+                {!! Form::open(['action' => 'mailController@send', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+<div class="form-group">
+{{ Form::hidden('groupid', $id)}}
+
+</div>
+
+{{Form::submit('Send Mail', ['class'=>'btn btn-primary'])}}
+{!! Form::close() !!}
                 @elseif(Session::has('guidesuccess'))
                 <p class="alert alert-success">{{ Session::get('guidesuccess') }}</p>
-                        
-            @endif
-            
+                
+
+@endif
                         </div>
-                    
-      
+
+
+
 @endsection

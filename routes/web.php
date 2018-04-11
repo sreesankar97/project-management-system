@@ -76,7 +76,7 @@ Route::prefix('admin')->group(function() {
   Route::get('/downloadExcel/{type}', 'MaatwebsiteDemoController@downloadExcel');
   Route::post('/importExcel', 'MaatwebsiteDemoController@importExcel');
   //Sending mail
-  Route::get('send','mailController@send');
+  Route::post('send','mailController@send');
 });
 //Faculty Login
 Route::prefix('faculty')->group(function() {
