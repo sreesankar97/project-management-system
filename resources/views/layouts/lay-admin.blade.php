@@ -33,8 +33,6 @@
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%" id="menu">
   <h3 class="w3-bar-item">Menu</h3>
   <a href="{{ url('admin/importexport') }}" class="w3-bar-item w3-button">Team Formation</a>
-    <a href="{{ url('users/documents') }}" class="w3-bar-item w3-button">Team Update</a>
-  <a href="{{ url('users/marks') ? 'active' : '' }}" class="w3-bar-item w3-button">Add Guides</a>
   <a href="{{ url('addatt') }}" class="w3-bar-item w3-button">Add Attendance</a>
   <a href="{{ url('addmarks') }}" class="w3-bar-item w3-button">Add Marks</a>
   <a href="{{ url('/select') }}" class="w3-bar-item w3-button">Sent Message</a>
