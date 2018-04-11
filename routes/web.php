@@ -13,8 +13,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
-Route::get('/guideeachmarks/{id}','FacultyController@addguidemarkseachstudent');
 
+Route::post('/teamconfirm','AdminController@teamconfirm');
+Route::get('/guideeachmarks/{id}','FacultyController@addguidemarkseachstudent');
+Route::post('/teamalloc','AdminController@teamalloc');
+Route::post('/createguide','AdminController@createguide');
+Route::get('createfaculty','AdminController@createfaculty');
 Route::get('/teamapprove/{id}','AdminController@guidealloc');
 Route::get('/formedteams/{id}','MaatwebsiteDemoController@viewteams');
 Route::get('/viewfiles/{id}','AdminController@viewfileuploads');

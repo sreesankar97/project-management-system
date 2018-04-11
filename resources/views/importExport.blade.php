@@ -25,6 +25,7 @@ th, td {
 <?php $count=count($users) ;
 $sorted=count($sorted) ; ?>
 
+
 @if($count==0 && $sorted==0)
 
 

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use \App\Student;
 use \App\sorted;
-
+use \App\faculty;
 use Excel;
 
 
@@ -322,8 +322,9 @@ class MaatwebsiteDemoController extends Controller
 
 	public function viewteamlist()
 	{
-		$var=sorted::select('group_id')->distinct('group_id')->get();
+		$var=sorted::select('group_id')->distinct('group_id')->orderBy('group_id','asc')->get();
 		return view('sorted')->with('users',$var);
+		
 	}
 
 

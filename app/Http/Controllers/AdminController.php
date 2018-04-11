@@ -10,6 +10,8 @@ use Auth;
 use App\posts;
 use Illuminate\Support\Facades\DB;
 use App\fileupload;
+use \App\faculty;
+use \App\sorted;
 
 class AdminController extends Controller
 {
@@ -231,21 +233,80 @@ class AdminController extends Controller
 
     public function guidealloc($group_id)
     {
-        return $group_id;
-        return view('guidealloc')->with('group_id',$group_id);
+        $faculty= faculty::get();
+      
+        return view('guideselect',['faculty'=>$faculty,'groupid'=>$group_id]);
+        
 
    
     }
 
     public function teamalloc($group_id)
     {
-        return $group_id;
+        
         return view('guidealloc')->with('group_id',$group_id);
 
    
     }
 
-    
+    public function createfaculty()
+    {
+        return view('guidealloc');
+    }
+
+    public function createguide(Request $request)
+    {
+        $post= new faculty;
+        $post->id=$request->facid;
+        $post->name= $request->name;
+        $post->email= $request->email;
+        $post->job_title= 'guide';
+        $post->password=bcrypt('password');
+        
+        $post->save();
+        return 'created';
+       
+    }
+
+    public function teamconfirm(Request $request)
+    {
+       $users=sorted::where('group_id',$request->groupid)->get();
+       foreach($users as $user)
+       {
+        $post= new studentmark;
+        $post->stu_id=$user->rollno;
+        $post->name= $user->name;
+        $post->email= $user->email;
+        $post->groupid= $user->group_id;
+        $post->present= 0;
+        $post->total_class= 1;
+        $post->review1 = 0;
+        $post->review2 = 0;
+        $post->final = 0;
+        $post->guide_marks = 0;
+        
+        
+        $post->save();
+       }
+
+       $post= new user;
+       $post->email='groupno'.$users[0]->group_id.'@proj.com';
+       $post->name='groupno'.$users[0]->group_id;
+       $post->groupid=$users[0]->group_id;
+       $post->password=bcrypt('password');
+       $post->save();
+        
+       $post= new geninfo;
+       $post->group_id = $users[0]->group_id;
+       $post->topic = 'Topic not assigned';
+       $post->guide_id= $request->facid;
+       $post->save();
+       $request->session()->flash('success', 'Team Created Successfully.. ');
+
+        sorted::where('group_id',$users[0]->group_id)->delete();
+        return view('admin');
+       
+    }
 
   
 
