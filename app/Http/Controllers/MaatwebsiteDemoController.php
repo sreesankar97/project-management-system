@@ -322,7 +322,7 @@ class MaatwebsiteDemoController extends Controller
 
 	public function viewteamlist()
 	{
-		$var=sorted::select('group_id')->distinct('group_id')->orderBy('group_id','asc')->get();
+		$var=sorted::distinct('group_id')->orderBy('group_id','asc')->get();
 		return view('sorted')->with('users',$var);
 		
 	}

@@ -264,7 +264,9 @@ class AdminController extends Controller
         $post->password=bcrypt('password');
         
         $post->save();
-        return 'created';
+        $request->session()->flash('guidesuccess', 'Faculty Created Successfully.. ');
+        return view('admin');
+    
        
     }
 
