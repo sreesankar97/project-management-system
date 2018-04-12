@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use App\fileupload;
 use \App\faculty;
 use \App\sorted;
+use Mail;
 
 class AdminController extends Controller
 {
@@ -234,19 +235,19 @@ class AdminController extends Controller
     public function guidealloc($group_id)
     {
         $faculty= faculty::get();
-
+      
         return view('guideselect',['faculty'=>$faculty,'groupid'=>$group_id]);
+        
 
-
-
+   
     }
 
     public function teamalloc($group_id)
     {
-
+        
         return view('guidealloc')->with('group_id',$group_id);
 
-
+   
     }
 
     public function createfaculty()
@@ -262,16 +263,17 @@ class AdminController extends Controller
         $post->email= $request->email;
         $post->job_title= 'guide';
         $post->password=bcrypt('password');
-
+        
         $post->save();
         $request->session()->flash('guidesuccess', 'Faculty Created Successfully.. ');
         return view('admin');
-
-
+    
+       
     }
 
     public function teamconfirm(Request $request)
     {
+       // dd($request);
        $users=sorted::where('group_id',$request->groupid)->get();
        foreach($users as $user)
        {
@@ -286,31 +288,72 @@ class AdminController extends Controller
         $post->review2 = 0;
         $post->final = 0;
         $post->guide_marks = 0;
-
-
+        
+        
         $post->save();
        }
-
+      
        $post= new user;
        $post->email='groupno'.$users[0]->group_id.'@proj.com';
        $post->name='groupno'.$users[0]->group_id;
        $post->groupid=$users[0]->group_id;
        $post->password=bcrypt('password');
        $post->save();
-
+        
        $post= new geninfo;
        $post->group_id = $users[0]->group_id;
        $post->topic = 'Topic not assigned';
-       $post->guide_id= $request->facid;
+       $post->guide_id= $request->list;
        $post->save();
        $request->session()->flash('success', 'Team Created Successfully.. ');
-
+       
         sorted::where('group_id',$users[0]->group_id)->delete();
         return view('admin')->with('id',$users[0]->group_id);
+       
+    }
+   
+
+
+
+    public function send(Request $request)
+{
+
+
+      $var=studentmark::where('groupid',$request->groupid)->get();
+      $mail = '';
+      foreach($var as $user)
+      {
+          $mail=$user->email;
+          $name=$user->name;
+          $groupid=$user->groupid;
+
+         /* Mail::send(['text'=>'mail'],['name','Harivishnu'],function($message)
+          {
+            $message->to($mail,$name)->subject('Test Email');
+            $message->from('hvmp2012@gmail.com','hvmp');
+            $message->text('Hi',$name);
+            */
+
+    Mail::send('mail', ['user' => $user], function ($m) use ($user) {
+          $m->from('hvmp2012@gmail.com', 'PMS');
+
+          $m->to($user->email, $user->name)->subject('Team Confirmation');
+          //$m->text('Hi',$user->name);
+          //$m->text('This is a conformation message that you have been added to Team No=',$user->group_id);
+          //$m->text('Your login id is=',$email);
+          //$m->text('Your Password is=amma');
+          });
+
+
+      }
+
+      $request->session()->flash('mailsuccess', 'Mail Send to Each Student Successfully.. ');
+      return view('mailconfirm')->with('id',0);
+     
 
     }
 
-
+  
 
 
 

@@ -1,4 +1,9 @@
+@extends('layouts.lay-admin')
+
+@section('content')
 
 
-
-<h1>mail send successfully</h1>
+@if(Session::has('mailsuccess'))
+<p class="alert alert-success">{{ Session::get('mailsuccess') }}</p>
+@endif
+@endsection

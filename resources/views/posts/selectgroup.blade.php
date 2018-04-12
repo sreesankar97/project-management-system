@@ -7,7 +7,8 @@
                 <div class="row">
                     
                     <div class="col-md-8 col-sm-8">
-                        <h3><a href="/groups/{{$post->group_id}}">{{$post->topic}}</a></h3>
+                        
+                        <p> <strong> Group No: {{$post->group_id}} <a href="/groups/{{$post->group_id}}">{{$post->topic}}</a></strong></p>
                     </div>
                 </div>
             </div>

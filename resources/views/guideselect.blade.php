@@ -13,14 +13,16 @@
         // Iterating through the product array
         foreach($faculty as $fac){
         ?>
-        <option value="<?php echo strtolower($fac->name); ?>"><?php echo $fac->name; ?></option>
+        <option value="<?php echo strtolower($fac->id); ?>">
+            <?php echo $fac->name; ?>
+        </option>
         
         <?php
         }
         ?>
-        <input type="hidden" id="facid" name="facid" value= <?php echo $fac->id ?>>
+         <input type="hidden" id="facid" name="facid" value= <?php echo $fac->id ?>> 
     </select>
-    <input type="hidden" id="groupid" name="groupid" value= <?php echo $groupid ?>>
+      <input type="hidden" id="groupid" name="groupid" value= <?php echo $groupid ?>> 
     <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
 <input type="submit" value="Submit">
 </form>

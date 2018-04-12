@@ -157,7 +157,7 @@ $sorted=count($sorted) ; ?>
                </div></div>
                  <div class="col-md-6">
                        <br>
-                {{Form::submit('ADD/UPDATE', ['class'=>'btn btn-primary'])}}
+                {{Form::submit('Form Teams', ['class'=>'btn btn-primary'])}}
                {!! Form::close() !!}
                    </div>
 				 </div>
