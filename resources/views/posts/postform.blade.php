@@ -13,7 +13,8 @@
                 {!! Form::open(['action' => 'AdminController@msgcompose', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                 <div class="form-group">
                     {{Form::label('groupid', 'Group Id')}}
-                    {{Form::text('groupid', $id, ['class' => 'form-control', 'placeholder' => 'Group Id'])}}
+                    {{Form::text('groupid', $id, ['class' => 'form-control', 'placeholder' => 'Group Id','readonly' => 'true'])}}
+            
                 </div>
                 <div class="form-group">
                         

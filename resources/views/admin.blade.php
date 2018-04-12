@@ -8,7 +8,7 @@
                 <br>
                 @if(Session::has('success'))
                 <p class="alert alert-success">{{ Session::get('success') }}</p>
-                <p>Do you want to Send mail to students in the groupno={{$id}} </p>
+                <i><p>Click the send button to Send mail to the students in the approved team </p></i>
                 {!! Form::open(['action' => 'AdminController@send', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 <div class="form-group">
         {{ Form::hidden('groupid', $id)}}

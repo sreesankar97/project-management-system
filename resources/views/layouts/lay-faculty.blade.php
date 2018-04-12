@@ -32,7 +32,7 @@
                                     </nav>
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%" id="menu">
   <h3 class="w3-bar-item">Menu</h3>
-  <a href="{{ url('guide/teamstatus') }}" class="w3-bar-item w3-button">Team Status</a>
+  {{-- <a href="{{ url('guide/teamstatus') }}" class="w3-bar-item w3-button">Team Status</a> --}}
     <a href="{{ url('guidemarks/selectgroup') }}" class="w3-bar-item w3-button">Add Marks</a>
   <a href="{{ url('guide/viewfile/selectgroup')  }}" class="w3-bar-item w3-button">View Files</a>
 
@@ -43,7 +43,7 @@
 <div style="margin-left:15%">
 
 <div class="w3-container w3-teal">
-<h1>Admin Dashboard</h1>
+<h1>Guide Dashboard</h1>
 </div>  
 <p>
 @include('layouts.validation')

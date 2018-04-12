@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Project Management System</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -76,8 +76,11 @@
 
             }
         </style>
+        
     </head>
     <body>
+        <h1><center>Project Management System<center></h1>
+     {{-- <div id="particles --}}
      <!-- <div id="particles-js" class="flex-center position-ref full-height" >  -->
 
         <div class="flex-center position-ref full-height">
@@ -96,7 +99,7 @@
             &nbsp;
                         <a class="btn" style="color:white;font-size:20px" href="{{ url('admin/login') }}">Admin Login</a>
             &nbsp;
-                        <a class="btn" style="color:white;font-size:20px" href="{{ url('/faculty/login') }}">Faculty Login</a>
+                        <a class="btn" style="color:white;font-size:20px" href="{{ url('/faculty/login') }}">Guide Login</a>
                         </div>
             @endif
                   </div>

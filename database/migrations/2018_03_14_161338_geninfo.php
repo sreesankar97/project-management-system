@@ -18,6 +18,7 @@ class Geninfo extends Migration
             $table->integer('group_id')->unique();
             $table->string('topic');
             $table->integer('guide_id');
+            $table->timestamps();
             
             });
     }

@@ -2,7 +2,7 @@
 @section('content')
 
 
-<h1>Teams Formed</h1>
+<h1>Teams Pending Approval</h1>
 @if(count($users) > 0)
     @foreach($users as $team)
     <div class="col-md-2 col-sm-2">
