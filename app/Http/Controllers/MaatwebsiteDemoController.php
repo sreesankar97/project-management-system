@@ -9,6 +9,7 @@ use \App\Student;
 use \App\sorted;
 use \App\faculty;
 use Excel;
+use App\geninfo;
 
 
 
@@ -315,7 +316,9 @@ class MaatwebsiteDemoController extends Controller
 	public function viewteams($group_id)
 	{
 		$var=sorted::where('group_id',$group_id)->get();
-		return view('formedteams')->with('users',$var);
+	    $members=sorted::where('group_id',$group_id)->get();
+		$all=sorted::select('group_id')->distinct('group_id')->orderBy('group_id','asc')->get();
+		return view('formedteams',['users'=>$var,'allgroupids'=>$all,'members'=>$members]);
 
 
 	}
@@ -324,6 +327,7 @@ class MaatwebsiteDemoController extends Controller
 	{
 		$groups=sorted::select('group_id')->distinct('group_id')->orderBy('group_id','asc')->get();
 		$members=sorted::get();
+	
 		
 		return view('sorted',['users'=>$groups,'members'=>$members]);
 		

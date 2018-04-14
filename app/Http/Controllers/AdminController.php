@@ -353,6 +353,15 @@ class AdminController extends Controller
 
     }
 
+    public function membermove(Request $request)
+    {
+
+      
+         sorted::where('rollno',$request->rollno)->update(array('group_id' => $request->groupid));
+    
+        return back()->with('success', 'Member moved successfully');
+    }
+
   
 
 

@@ -13,7 +13,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
-
+Route::post('/membermove','AdminController@membermove');
 Route::post('/teamconfirm','AdminController@teamconfirm');
 Route::get('/guideeachmarks/{id}','FacultyController@addguidemarkseachstudent');
 Route::post('/teamalloc','AdminController@teamalloc');
