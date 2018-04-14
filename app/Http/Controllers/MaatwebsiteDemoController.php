@@ -325,11 +325,10 @@ class MaatwebsiteDemoController extends Controller
 
 	public function viewteamlist()
 	{
-		$groups=sorted::select('group_id')->distinct('group_id')->orderBy('group_id','asc')->get();
-		$members=sorted::get();
-	
 		
-		return view('sorted',['users'=>$groups,'members'=>$members]);
+		$members=sorted::get();
+		$all=sorted::select('group_id')->distinct('group_id')->orderBy('group_id','asc')->get();
+    	return view('sorted',['users'=>$all,'members'=>$members]);
 		
 	}
 

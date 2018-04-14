@@ -1,14 +1,7 @@
 @extends('layouts.lay-admin')
 <style>
 
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 5px;
-    text-align: left;    
-}
+
 .btn{
                 color: black;
                 text-decoration: none;
@@ -20,29 +13,35 @@ th, td {
             }
 </style>
 @section('content')
-<table style="width:100%">
-        
+<table class="table table-bordered">
+    <thead>
         <tr>
             <th>Name</th>
              <th>1st Review Marks</th>
              <th>2nd Review Marks</th>
-                 <th>Final Review</th>
+                 <th>Final Marks</th>
                  <th>Guide Marks</th>
-            </tr>         
+            </tr>   
+    </thead>
+    <tbody>      
     @foreach($users as $row)
             
             <?php $perc = ( $row->present / $row->total_class )*100; 
                   $perc=number_format($perc,2,'.',',') ?>
             
             <tr>
-                        <td>{{$row->name}}</td>
-                        <td>{{$row->review1}}</td>
-                        <td>{{$row->review2}}</td>
-                        <td>{{$row->final}}</td>
-                        <td>{{$row->guide_marks}}</td>
+                        <td scope="col">{{$row->name}}</td>
+                        <td scope="col">{{$row->review1}}</td>
+                        <td scope="col">{{$row->review2}}</td>
+                        <td scope="col">{{$row->final}}</td>
+                        <td scope="col">{{$row->guide_marks}}</td>
+                        
+                        
+                        
     
                  </tr>
                 @endforeach
+    </tbody>
     </table>
     @if(count($users) > 0)
     {{--  <div class="dropdown show">

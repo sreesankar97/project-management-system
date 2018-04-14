@@ -20,7 +20,7 @@ class Sorted extends Migration
          $table->string('email')->unique();
          $table->string('rollno')->unique();
          $table->string('cgpa');
-         $table->string('group_id');
+         $table->integer('group_id');
          $table->timestamps();
 
      });

@@ -1,13 +1,6 @@
 @extends('layouts.lay-admin')
 <style>
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 5px;
-    text-align: left;    
-}
+
 .btn{
                 color: black;
                 text-decoration: none;
@@ -19,28 +12,31 @@ th, td {
             }
 </style>
 @section('content')
-<table style="width:100%">
-        
+<table class="table table-bordered">
+    <thead>
         <tr>
             <th>Name</th>
              <th>Class Present</th>
              <th>Total Classes</th>
                  <th>Total Percentage</th>
-            </tr>         
+            </tr>   
+    </thead>
+    <tbody>      
     @foreach($users as $row)
             
             <?php $perc = ( $row->present / $row->total_class )*100; 
                   $perc=number_format($perc,2,'.',',') ?>
             
             <tr>
-                        <td>{{$row->name}}</td>
-                        <td>{{$row->present}}</td>
-                        <td>{{$row->total_class}}</td>
-                        <td>{{$perc}}</td>
+                        <td scope="col">{{$row->name}}</td>
+                        <td scope="col">{{$row->present}}</td>
+                        <td scope="col">{{$row->total_class}}</td>
+                        <td scope="col">{{$perc}}</td>
                         
     
                  </tr>
                 @endforeach
+    </tbody>
     </table>
     @if(count($users) > 0)
     {{--  <div class="dropdown show">
