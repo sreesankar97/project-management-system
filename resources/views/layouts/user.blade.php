@@ -28,11 +28,15 @@
                                     </li>
                                     </ul>
                                     </nav>
+                                    @php
+                                    $count =10;
+                                    @endphp
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%">
   <h3 class="w3-bar-item">Menu</h3>
   <a href="{{ url('users/attendence') }}" class="w3-bar-item w3-button">View Attendence</a>
   <a href="{{ url('users/marks') }}" class="w3-bar-item w3-button">View Marks</a>
-  <a href="{{ url('/viewmsg') }}" class="w3-bar-item w3-button">View Messages</a>
+  &nbsp;&nbsp;<a href="{{ url('/viewmsg') }}">Inbox <span class="badge">{{$count}}</span></a>
+
   <a href="{{ url('/proformaupload') }}" class="w3-bar-item w3-button">Submit Documents</a>
 </div>
 

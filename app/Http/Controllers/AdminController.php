@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use App\fileupload;
 use \App\faculty;
 use \App\sorted;
+use \App\proforma;
 use Mail;
 
 class AdminController extends Controller
@@ -311,6 +312,15 @@ class AdminController extends Controller
         return view('admin')->with('id',$users[0]->group_id);
        
     }
+
+    public function viewproforma()
+    {
+       
+        $proforma=proforma::where('admin_verify',0)->orderBy('groupid','asc')->distinct('groupid')->get();  
+        $members=studentmark::get(); 
+        return view('viewproforma',['proforma'=>$proforma,'members'=>$members]);
+
+    }
    
 
 
@@ -358,8 +368,14 @@ class AdminController extends Controller
 
       
          sorted::where('rollno',$request->rollno)->update(array('group_id' => $request->groupid));
-    
         return back()->with('success', 'Member moved successfully');
+    }
+
+    public function approveproforma(Request $request)
+    {
+        geninfo::where('group_id',$request->groupid)->update(array('topic' => $request->topic));
+        proforma::where('groupid',$request->groupid)->update(array('admin_verify' => 1));
+        return back()->with('success', 'Topic assigned Successfully');
     }
 
   

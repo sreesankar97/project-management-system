@@ -7,6 +7,7 @@ use App\studentmarks;
 use App\posts;
 use App\User;
 use App\fileupload;
+use App\proforma;
 use Auth;
 
 class studentcontroller extends Controller
@@ -80,6 +81,40 @@ public function fileup()
         return view('fileupload',['groupid'=>$id,'downloads'=>$download]);
        
 
+
+}
+
+public function submitproforma(Request $request)
+{
+ 
+    $this->validate($request, [
+        'filename' => 'required',
+        'topic'=> 'required',
+    
+    ]);
+
+    if($request->hasFile('filename')){
+        // Get filename with the extension
+        $filenameWithExt = $request->file('filename')->getClientOriginalName();
+        // Get just filename
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        // Get just ext
+        $extension = $request->file('filename')->getClientOriginalExtension();
+        // Filename to store
+        $fileNameToStore= $filename.'_'.time().'.'.$extension;
+        // Upload Image
+        $path = $request->file('filename')->storeAs('public/proforma', $fileNameToStore);
+    } else {
+        $fileNameToStore = 'nofile.jpg';
+    }
+    
+    $file = new proforma;
+   $file->filename = $fileNameToStore;
+  $file->groupid= $request->groupid;
+  $file->topic=$request->topic;
+  $file->save();
+  $request->session()->flash('success', 'Record successfully added!');
+            return back();
 
 }
 

@@ -9,10 +9,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('/submitproforma','studentcontroller@submitproforma');
+
 Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
+Route::get('uploadproforma/{id}',function ($id) {
+  return view('proformasubmit')->with('groupid',$id);
+});
+
+Route::post('/approveproforma','AdminController@approveproforma');
+Route::get('/viewproforma','AdminController@viewproforma');
 Route::post('/membermove','AdminController@membermove');
 Route::post('/teamconfirm','AdminController@teamconfirm');
 Route::get('/guideeachmarks/{id}','FacultyController@addguidemarkseachstudent');

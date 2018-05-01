@@ -205,7 +205,7 @@ data-target="#myModal"><i> Move Students </i>
 <div class="modal-content">
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal">&times;</button>
-<h4 class="modal-title">Select Team</h4>
+<h4 class="modal-title">Select Student and Team</h4>
 </div>
 <div class="modal-body">
 <p><i>Select the team which you want the student to move to</i> </p>

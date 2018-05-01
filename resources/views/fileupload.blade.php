@@ -52,6 +52,7 @@
         <p class="alert alert-success">{{ Session::get('success') }}</p>
     @endif
 </div>
+
 <div class="container">
     
 <div class="col-md-8">
@@ -65,7 +66,10 @@
     {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
 {!! Form::close() !!}
 </div>
+
 </div>
+<a href="/uploadproforma/{{$groupid}}"><i>click here to Submit proforma</i></a>
+
 
 
 
