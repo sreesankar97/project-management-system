@@ -47,6 +47,12 @@ font-family: Trebuchet MS;
 <p class="alert alert-success">{{ Session::get('success') }}</p>
 @endif
 
+@if(Session()->has('msg'))
+<div class="alert alert-danger">
+  {{ Session()->get('msg') }}
+ </div>
+@endif
+
 @if(count($proforma)>0)
 <h2> Teams Submitted Proforma </h2>
 @else 
@@ -69,9 +75,9 @@ font-family: Trebuchet MS;
                     @endif
                     
               @endforeach 
-             
+              &nbsp 
               <a href="/storage/proforma/{{$proforma->filename}}" download="{{$proforma->filename}}">
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="btn success">
                 <i class="glyphicon glyphicon-download">
                     
                     Download
@@ -79,12 +85,23 @@ font-family: Trebuchet MS;
                 </button>
                 
             </a>
-            <br
-            <br>&nbsp &nbsp
-            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+            <br>
+            &nbsp &nbsp<br>&nbsp
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
           data-target="#myModal-{{$proforma->file_id}}"> <i> Approve </i>
         
-        </button> </div></div> </div> 
+        </button> 
+        
+        <a href="/proformareject/{{$proforma->file_id}}" onclick="return confirm('Are you sure? Do you want to reject this proforma ?')">
+          <button type="button" class="btn btn-primary btn-xs">
+          <i > 
+           
+            Reject
+          </i>
+          </button>
+      </a>
+        <br>
+    </div></div> </div> 
         <!-- Modal -->
 <div id="myModal-{{$proforma->file_id}}" class="modal fade" role="dialog">
   <div class="modal-dialog">

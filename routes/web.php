@@ -19,6 +19,10 @@ Route::get('uploadproforma/{id}',function ($id) {
   return view('proformasubmit')->with('groupid',$id);
 });
 
+Route::post('/proformarejectreason','AdminController@proformarejectreason');
+
+Route::get('/viewproforma','AdminController@viewproforma');
+Route::get('/proformareject/{id}','AdminController@proformareject');
 Route::post('/approveproforma','AdminController@approveproforma');
 Route::get('/viewproforma','AdminController@viewproforma');
 Route::post('/membermove','AdminController@membermove');

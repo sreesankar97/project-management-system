@@ -378,6 +378,30 @@ class AdminController extends Controller
         return back()->with('success', 'Topic assigned Successfully');
     }
 
+    public function proformareject($id)
+    {
+        return view('proformareject')->with('file_id',$id);
+    }
+
+    public function proformarejectreason(Request $request)
+    {
+     $this->validate($request, [
+         'body' => 'required',
+         
+     ]);
+  
+     $file=proforma::where('file_id',$request->file_id)->get();
+   
+    $groupid= $file[0]->groupid;
+    $post= new posts;
+    $post->group_id =$groupid;
+    $post->title= " Proforma Rejected";
+    $post->body= "Your Proforma named: ".$file[0]->topic." is rejected. "." Comments :".$request->body;
+    $post->save();
+    proforma::where('file_id',$request->file_id)->update(array('admin_verify' => 2));
+   
+    return redirect()->to("viewproforma")->with('msg','Proforma Rejected');
+  }
   
 
 
