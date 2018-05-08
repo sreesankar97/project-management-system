@@ -58,7 +58,7 @@
           
 <div class="col-md-14">
            
-        @for($i=0;$i<120;$i++)  
+        @for($i=0;$i<100;$i++)  
          &nbsp 
         @endfor
        
@@ -67,9 +67,11 @@
 data-target="#myModal"><i> Move Students </i>
 
 </button> 
-&nbsp&nbsp
-
+&nbsp 
+<a href="/deleteteam" onclick="return confirm('Are you sure? Do you want to approve the selected group?')">
 <button type="button" class="w3-button w3-red">Delete all</button>
+
+</a>
 
 </div>
 <br>

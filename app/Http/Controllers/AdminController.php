@@ -403,6 +403,17 @@ class AdminController extends Controller
     return redirect()->to("viewproforma")->with('msg','Proforma Rejected');
   }
   
+  public function deleteallteams()
+  {
+      sorted::truncate();
+      geninfo::truncate();
+      user::truncate();
+      studentmark::truncate();
+      posts::truncate();
+      proforma::truncate();
+      fileupload::truncate();
+      return redirect()->to("admin/importexport")->with('mssg','All Teams Deleted Successfully');
+    }
 
 
 

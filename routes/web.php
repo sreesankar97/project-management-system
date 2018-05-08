@@ -20,7 +20,7 @@ Route::get('uploadproforma/{id}',function ($id) {
 });
 
 Route::post('/proformarejectreason','AdminController@proformarejectreason');
-
+Route::get('/deleteteam','AdminController@deleteallteams');
 Route::get('/viewproforma','AdminController@viewproforma');
 Route::get('/proformareject/{id}','AdminController@proformareject');
 Route::post('/approveproforma','AdminController@approveproforma');

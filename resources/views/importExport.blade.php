@@ -22,6 +22,11 @@ th, td {
             }
 </style>
 
+
+@if(Session::has('mssg'))
+<p class="alert alert-success">{{ Session::get('mssg') }}</p>
+@endif
+
 <?php $count=count($users) ;
 $sorted=count($sorted) ; ?>
 
