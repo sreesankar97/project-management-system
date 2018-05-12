@@ -19,6 +19,8 @@ Route::get('uploadproforma/{id}',function ($id) {
   return view('proformasubmit')->with('groupid',$id);
 });
 
+
+Route::post('/newteamcreate','AdminController@newteamcreate');
 Route::post('/proformarejectreason','AdminController@proformarejectreason');
 Route::get('/deleteteam','AdminController@deleteallteams');
 Route::get('/viewproforma','AdminController@viewproforma');

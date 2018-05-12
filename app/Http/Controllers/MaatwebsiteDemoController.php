@@ -328,7 +328,8 @@ class MaatwebsiteDemoController extends Controller
 		
 		$members=sorted::get();
 		$all=sorted::select('group_id')->distinct('group_id')->orderBy('group_id','asc')->get();
-    	return view('sorted',['users'=>$all,'members'=>$members]);
+		$max= sorted::select('group_id')->max('group_id');
+    	return view('sorted',['users'=>$all,'members'=>$members,'max'=>$max]);
 		
 	}
 

@@ -83,6 +83,7 @@
 <br>
 
 &nbsp &nbsp&nbsp&nbsp
+
 <!-- Trigger the modal with a button -->
 <button type="button" class="w3-button w3-blue" data-toggle="modal"
 data-target="#myModal"><i> Move Students </i>

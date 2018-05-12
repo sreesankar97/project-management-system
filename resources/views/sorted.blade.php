@@ -51,6 +51,9 @@
 
           
           </style>
+          @if(Session::has('teamsuccess'))
+          <p class="alert alert-success">{{ Session::get('teamsuccess') }}</p>
+          @endif
           
           
 <h2>
@@ -58,7 +61,7 @@
           
 <div class="col-md-14">
            
-        @for($i=0;$i<100;$i++)  
+        @for($i=0;$i<85;$i++)  
          &nbsp 
         @endfor
        
@@ -72,6 +75,10 @@ data-target="#myModal"><i> Move Students </i>
 <button type="button" class="w3-button w3-red">Delete all</button>
 
 </a>
+&nbsp  
+<button type="button" class="w3-button w3-green" data-toggle="modal"
+data-target="#createteam"><i> Create Team</i>
+</button>
 
 </div>
 <br>
@@ -213,6 +220,8 @@ data-target="#myModal"><i> Move Students </i>
 <p><i>Select the team which you want the student to move to</i> </p>
 </div>
 <form action = "{{ action('AdminController@membermove') }}" method ="POST">
+
+ 
    
   <label for = "type" class = "col-sm-2 control-label"><p >Select Student</p></label>
   <div class = "col-sm-4">
@@ -260,6 +269,55 @@ data-target="#myModal"><i> Move Students </i>
 </div>
 
 </div>
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="createteam" role="dialog">
+    <div class="modal-dialog">
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Create New Team</h4>
+    </div>
+    <div class="modal-body">
+    <p><i>Select Atleast One Student</i> </p>
+    </div>
+    <form action = "{{ action('AdminController@newteamcreate') }}" method ="POST">
+        <label for = "type" class = "col-sm-2 control-label"><p >Team Id</p></label>
+      <div class="col-md-2">
+      {{Form::text('groupid',$max+1, ['class' => 'form-control', 'placeholder' => 'Group Id','readonly' => 'true'])}}
+      </div>
+      <label for = "type" class = "col-sm-2 control-label"><p >Select Student</p></label>
+      <div class = "col-sm-4">
+      <select name="rollno" id="rollno" class="selectpicker" data-live-search="true">
+      
+      @foreach ($members as $user)
+      <option value="<?php echo strtolower($user->rollno); ?>">
+        <?php echo $user->name; ?>
+    </option>
+      @endforeach 
+      </select>
+     
+      </div>
+     
+      
+    <div class="modal-footer">
+    
+    <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
+    <button type="submit" class="btn btn-default"  value="MOVE"> CREATE</button>
+    
+    </div>
+    
+    </div>
+    </form>
+    
+    </div>
+    </div>
+    
 
 @else
     <p>No Teams found</p>

@@ -415,6 +415,13 @@ class AdminController extends Controller
       return redirect()->to("admin/importexport")->with('mssg','All Teams Deleted Successfully');
     }
 
+    public function newteamcreate(Request $request)
+    {
+
+        sorted::where('rollno',$request->rollno)->update(array('group_id' => $request->groupid));
+        return back()->with('teamsuccess', 'New Team Created with the selected student');
+    }
+
 
 
 }
