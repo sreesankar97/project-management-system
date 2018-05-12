@@ -1,6 +1,7 @@
 @extends('layouts.user')
 
 @section('content')
+@if(count($downloads)!=0)
 <html>
 <div>
 
@@ -47,10 +48,13 @@
 </body>
 </div>
 </html>
+@endif
 <div class="panel-body">
         @if(Session::has('success'))
         <p class="alert alert-success">{{ Session::get('success') }}</p>
-    @endif
+	   @elseif(Session::has('proformasuccess'))
+	<p class="alert alert-success">{{ Session::get('proformasuccess') }}</p>
+@endif
 </div>
 
 <div class="container">
@@ -67,7 +71,7 @@
 {!! Form::close() !!}
 </div>
 
-</div>
+</div> &nbsp;
 <a href="/uploadproforma/{{$groupid}}"><i>click here to Submit proforma</i></a>
 
 

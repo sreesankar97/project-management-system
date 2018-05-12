@@ -113,8 +113,18 @@ public function submitproforma(Request $request)
   $file->groupid= $request->groupid;
   $file->topic=$request->topic;
   $file->save();
-  $request->session()->flash('success', 'Record successfully added!');
-            return back();
+  return redirect()->to("proformaupload")->with('proformasuccess','Proforma Submitted Successfully');
+
+}
+
+public function proformacheck($id)
+{
+    $var = proforma::where('groupid',$id)->where(function($q) {
+        $q->where('admin_verify', 0)
+          ->orWhere('admin_verify', 1);
+    })->get();
+    $count=count($var);
+    return view('proformasubmit',['groupid'=>$id,'count'=>$count]);
 
 }
 

@@ -2,11 +2,7 @@
 
 @section('content')
 
-<div class="panel-body">
-        @if(Session::has('success'))
-        <p class="alert alert-success">{{ Session::get('success') }}</p>
-    @endif
-</div>
+@if($count==0)
 
 <div class="container">
     
@@ -24,6 +20,13 @@
 </div>
 
 </div>
+@else
+
+<h3> Proforma Already Submitted.. </h3>
+
+@endif
+
+
 
 
 

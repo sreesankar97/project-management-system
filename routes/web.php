@@ -15,9 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
-Route::get('uploadproforma/{id}',function ($id) {
-  return view('proformasubmit')->with('groupid',$id);
-});
+Route::get('uploadproforma/{id}','studentcontroller@proformacheck');
 
 
 Route::post('/newteamcreate','AdminController@newteamcreate');
