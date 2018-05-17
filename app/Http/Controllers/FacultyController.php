@@ -10,6 +10,8 @@ use Auth;
 use App\posts;
 use Illuminate\Support\Facades\DB;
 use App\fileupload;
+use \App\faculty;
+use Hash;
 
 class FacultyController extends Controller
 {
@@ -144,6 +146,49 @@ class FacultyController extends Controller
          $request->session()->flash('success', 'Record successfully added!');
          return back();
 
+ }
+
+
+ public function facchangepassword(Request $request)
+ {
+      
+    $this->validate($request, [
+        'oldpass' => 'required',
+        'newpass'=> 'required',
+        'passconf'=> 'required',
+    
+    ]);
+    $id=Auth::user()->id;
+    if($request->newpass != $request->passconf )
+    {
+    $request->session()->flash('mssg', 'Passwords doesnt match');
+    return back();
+    }
+
+    elseif($request->oldpass != (Hash::check($request->input('oldpass'), Auth::user()->password)))
+    {
+        $request->session()->flash('mssg', 'Current password is incorrect');
+        return back();
+    }
+
+    if(strlen($request->newpass)<6)
+    {
+        $request->session()->flash('mssg', 'The password must be at least 6 characters');
+        return back();
+    }
+    
+    if($request->newpass == $request->passconf && (Hash::check($request->input('oldpass'), Auth::user()->password)))
+    {
+        faculty::where('id',$id)->update(array('password' => bcrypt($request->newpass)));
+        
+        return back()->with('passwordsuccess','Password changed succesfully');
+    }
+
+ }
+
+ public function changefacpassword()
+ {
+     return view('changefacpassword');
  }
 
 

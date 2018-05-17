@@ -9,6 +9,7 @@ use App\User;
 use App\fileupload;
 use App\proforma;
 use Auth;
+use Hash;
 
 class studentcontroller extends Controller
 {
@@ -126,6 +127,42 @@ public function proformacheck($id)
     $count=count($var);
     return view('proformasubmit',['groupid'=>$id,'count'=>$count]);
 
+}
+
+public function changepassword(Request $request)
+{
+     
+    $this->validate($request, [
+        'oldpass' => 'required',
+        'newpass'=> 'required',
+        'passconf'=> 'required',
+    
+    ]);
+    $id=Auth::user()->groupid;
+    if($request->newpass != $request->passconf )
+    {
+    $request->session()->flash('mssg', 'Passwords doesnt match');
+    return back();
+    }
+
+    elseif($request->oldpass != (Hash::check($request->input('oldpass'), Auth::user()->password)))
+    {
+        $request->session()->flash('mssg', 'Current password is incorrect');
+        return back();
+    }
+
+    if(strlen($request->newpass)<6)
+    {
+        $request->session()->flash('mssg', 'The password must be at least 6 characters');
+        return back();
+    }
+
+    if($request->newpass == $request->passconf && (Hash::check($request->input('oldpass'), Auth::user()->password)))
+    {
+        user::where('groupid',$id)->update(array('password' => bcrypt($request->newpass)));
+        
+        return back()->with('passwordsuccess','Password changed succesfully');
+    }
 }
 
 

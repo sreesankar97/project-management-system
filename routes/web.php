@@ -10,14 +10,19 @@
 |
 */
 Route::post('/submitproforma','studentcontroller@submitproforma');
-
+Route::get('changeteampass', function () {
+  return view('changeteampass');
+});
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('changefacpassword','FacultyController@changefacpassword');
+
 Auth::routes();
 Route::get('uploadproforma/{id}','studentcontroller@proformacheck');
-
-
+Route::post('/facchangepassword','FacultyController@facchangepassword');
+Route::post('/changepassword','studentcontroller@changepassword');
 Route::post('/newteamcreate','AdminController@newteamcreate');
 Route::post('/proformarejectreason','AdminController@proformarejectreason');
 Route::get('/deleteteam','AdminController@deleteallteams');

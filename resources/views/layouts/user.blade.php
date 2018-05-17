@@ -38,6 +38,7 @@
   &nbsp;&nbsp;<a href="{{ url('/viewmsg') }}">Inbox <span class="badge">{{$count}}</span></a>
 
   <a href="{{ url('/proformaupload') }}" class="w3-bar-item w3-button">Submit Documents</a>
+  <a href="{{ url('/changeteampass') }}" class="w3-bar-item w3-button">Change Password</a>
 </div>
 
                     <script src="{{ asset('js/app.js') }}"></script>    

@@ -35,6 +35,7 @@
   {{-- <a href="{{ url('guide/teamstatus') }}" class="w3-bar-item w3-button">Team Status</a> --}}
     <a href="{{ url('guidemarks/selectgroup') }}" class="w3-bar-item w3-button">Add Marks</a>
   <a href="{{ url('guide/viewfile/selectgroup')  }}" class="w3-bar-item w3-button">View Files</a>
+  <a href="{{ url('changefacpassword')  }}" class="w3-bar-item w3-button">Change Password</a>
 
 </div>
 
