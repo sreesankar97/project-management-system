@@ -99,6 +99,7 @@
 
 @endif
  </div>
+            <?php $tot = $student[0]->total_class; ?>
             <h2> Add Attendance for {{$student[0]->name}}</h2>
             {!! Form::open(['action' => 'AdminController@attendance', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
@@ -106,11 +107,7 @@
                     {{ Form::hidden('userid', $student[0]->email)}}
              
              </div>
-             <div class="col-md-2">
-            <div class="form-group">
-                {{Form::label('label1', 'Total No. of Classes')}}
-                {{Form::text('total', '', ['class' => 'form-control', 'placeholder' => 'Total No. of Classes'])}}
-            </div></div>
+             
             <div class="form-group">
                     <div class="col-md-2">
                     {{Form::label('label2', 'No. of Classes Present')}}

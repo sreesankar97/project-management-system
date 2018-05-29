@@ -1,1 +1,14 @@
-This is a test mail.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <b>You are successfully added to the project team</b>
+    <br>
+    <b>For more details contact your project coordinator</b>
+</body>
+</html>

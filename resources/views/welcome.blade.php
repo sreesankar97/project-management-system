@@ -7,12 +7,9 @@
 
         <title>Project Management System</title>
 
-        <!-- Fonts -->
+      
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-
-
-        <!-- Styles -->
+        
         <style>
             html, body {
                 background-color: #fff;
@@ -80,8 +77,7 @@
     </head>
     <body>
         <h1><center>Project Management System<center></h1>
-     {{-- <div id="particles --}}
-     <!-- <div id="particles-js" class="flex-center position-ref full-height" >  -->
+    
 
         <div class="flex-center position-ref full-height">
 
@@ -108,12 +104,6 @@
               </div>
             </div>
         </div>
-         <!-- <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>   -->
-        <!-- <script>
-        particlesJS.load('particles-js', 'js/particles.json',
-        function(){
-            console.log('particles.json loaded...')
-        })
-    </script> -->
+     
     </body>
 </html>

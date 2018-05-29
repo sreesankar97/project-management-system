@@ -17,10 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('addtotclass', 
+ 'AdminController@addtotalclass');
+
+
 Route::get('changefacpassword','FacultyController@changefacpassword');
 
 Auth::routes();
 Route::get('uploadproforma/{id}','studentcontroller@proformacheck');
+Route::post('/addtotclassconducted','AdminController@addtotclassconducted');
 Route::post('/facchangepassword','FacultyController@facchangepassword');
 Route::post('/changepassword','studentcontroller@changepassword');
 Route::post('/newteamcreate','AdminController@newteamcreate');

@@ -123,6 +123,7 @@ class AdminController extends Controller
         $user = studentmark::where('email',$id)->get();
         $group_id= $user[0]->groupid;
         $users= studentmark::where('groupid',$group_id)->get();
+    
         return view('Attendance.addeachattend',['student'=>$user,'users'=>$users]);
 
     }
@@ -130,28 +131,36 @@ class AdminController extends Controller
     public function attendance(Request $request)
     {
         $this->validate($request, [
-            'total' => 'required',
+          
             'present' => 'required',
 
         ]);
 
-        $tot = $request->total;
+        $total = studentmark::all();
+       // $tot= intval($total[0]); 
+        
+        $tot= $total->first();
+        $tot= $tot->total_class;
         $present= $request->present;
+        if($tot==1 || $tot==0)
+        {
+            return back()->with('msg', 'Firstly update total classes conducted');
+        }
 
-        if($tot > 0 && $tot> $present )
+        else if($tot > 0 && $tot> $present )
         {
 
-        studentmark::where('email',$request->userid)->update(array('total_class' => $request->total));
+        //studentmark::where('email',$request->userid)->update(array('total_class' => $request->total));
         studentmark::where('email',$request->userid)->update(array('present' => $request->present));
         $request->session()->flash('success', 'Record successfully added!');
         return back();
         }
 
-        else if(($request->total)==0)
-        return back()->with('msg', 'Total classes conducted connot be zero or text');
+        else if(($request->present)> $tot)
+        return back()->with('msg', 'Total classes conducted cannot be less than classes attended');
 
-         else if(($request->total) < ($request->present))
-         return back()->with('msg', 'Total classes conducted cannot be less than classes attended');
+         else 
+         return back()->with('msg', 'Total classes conducted cannot be string or null');
 
 
     }
@@ -422,6 +431,45 @@ class AdminController extends Controller
         return back()->with('teamsuccess', 'New Team Created with the selected student');
     }
 
+    public function addtotalclass(Request $request)
+    {
+        return view('marks.addtotalclass');
+    }
+
+    public function addtotclassconducted(Request $request)
+    {
+        $this->validate($request, [
+          
+            'total' => 'required',
+
+        ]);
+        
+        $users=studentmark::get();
+        if(($request->total)==0)
+        return back()->with('msg', 'Total classes conducted connot be zero or text');
+
+         else if(($request->total) < 0)
+         return back()->with('msg', 'Total classes conducted cannot be less than zero');
+
+         else if(($request->total>0))
+         {
+        foreach($users as $user)
+        {
+            
+            studentmark::where('stu_id',$user->stu_id)->update(array('total_class' => $request->total));
+       
+
+        }
+    }
+
+    else
+    {
+        return back()->with('msg', 'Total classes conducted cannot be a string');
+    }
+
+        return back()->with('success', 'Total classes conducted is now updated');
+
+     }
 
 
 }

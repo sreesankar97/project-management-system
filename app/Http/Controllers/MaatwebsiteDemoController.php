@@ -10,6 +10,7 @@ use \App\sorted;
 use \App\faculty;
 use Excel;
 use App\geninfo;
+use App\studentmark;
 
 
 
@@ -85,6 +86,20 @@ class MaatwebsiteDemoController extends Controller
 
 
 		if($request->hasFile('import_file')){
+			if($request->hasFile('import_file')){
+				// Get filename with the extension
+				$filenameWithExt = $request->file('import_file')->getClientOriginalName();
+				// Get just filename
+				$filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+				// Get just ext
+				$extension = $request->file('import_file')->getClientOriginalExtension();
+				// Filename to store
+				
+				if($extension!=='xlsx')
+				{
+					return back()->with('error','Unsuccessfull');
+				}
+			}
 
 			$path = $request->file('import_file')->getRealPath();
 
@@ -172,8 +187,14 @@ class MaatwebsiteDemoController extends Controller
 
 		$var=student::orderBy('cgpa', 'desc')->get();
 		$sorted=sorted::orderBy('cgpa', 'desc')->get();
-	
-		return view('importExport',['sorted'=>$sorted,'users'=>$var]);
+		$formed= studentmark::get();
+		if(count($formed)>0 && count($sorted)==0)
+		{   $members=studentmark::get();
+			$all=studentmark::select('groupid')->distinct('groupid')->orderBy('groupid','asc')->get();
+			
+			return view('viewformedteams',['users'=>$all,'members'=>$members]);
+		}
+		return view('importExport',['sorted'=>$sorted,'users'=>$var,'formed'=>$formed]);
 
 	}
 	public function team(Request $request)

@@ -71,7 +71,7 @@ data-target="#myModal"><i> Move Students </i>
 
 </button> 
 &nbsp 
-<a href="/deleteteam" onclick="return confirm('Are you sure? Do you want to approve the selected group?')">
+<a href="/deleteteam" onclick="return confirm('Are you sure? Do you want to Delete all the teams?')">
 <button type="button" class="w3-button w3-red">Delete all</button>
 
 </a>
